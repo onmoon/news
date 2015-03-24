@@ -1,5 +1,5 @@
 'use strict';
-var config = require('config/adapters');
+var config = require('app/config/adapters');
 var knex = require('knex');
 
 module.exports = knex({

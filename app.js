@@ -19,6 +19,7 @@ var middlewareStack = [
 //    require('koa-session')(), // расширяет контекст свойством session
 //    require('koa-less')('/less', {dest: '/css', pathRoot: staticRoot}), 
     // компилирует less в css, если был запрошен файл со стилями, имеет много интересных опций
+    require('koa-bodyparser')(),
     require('koa-logger')(), // логирует все http запросы
 //    require('koa-favicon')(staticRoot + '/favicon.png'),
     require('koa-static')(staticRoot), // отдает статику, удобно для разработки, лучше конечно делать это nginx`ом
