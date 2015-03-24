@@ -1,0 +1,31 @@
+{
+  "name": "News",
+  "version": "0.0.1",
+  "description": "News portal on Koa.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "test app.js"
+  },
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "jade": "^1.9.2",
+    "knex": "^0.7.6",
+    "koa": "^0.18.1",
+    "koa-compose": "^2.3.0",
+    "koa-logger": "^1.2.2",
+    "koa-router": "^4.2.0",
+    "koa-static": "^1.4.9",
+    "koa-views": "^3.0.0",
+    "pg": "^4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onmoon/news.git"
+  },
+  "author": "onmoon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onmoon/news/issues"
+  },
+  "homepage": "https://github.com/onmoon/news"
+}
