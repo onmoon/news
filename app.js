@@ -22,8 +22,8 @@ var middlewareStack = [
     require('koa-bodyparser')(),
     require('koa-logger')(), // логирует все http запросы
 //    require('koa-favicon')(staticRoot + '/favicon.png'),
-    require('koa-static')(staticRoot), // отдает статику, удобно для разработки, лучше конечно делать это nginx`ом
-    require('koa-views')(templateRoot, {'default': 'jade'}) // Jade еще одна причина любви к nodejs
+    require('koa-static')(staticRoot),
+    require('koa-views')(templateRoot, {'default': 'ejs'})
 ];
 
 //require('koa-locals')(app); 
