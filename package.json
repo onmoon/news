@@ -4,11 +4,11 @@
   "description": "News portal on Koa.js",
   "main": "app.js",
   "scripts": {
+    "gulp": "gulp",
     "test": "test app.js"
   },
   "dependencies": {
     "ejs": "^2.3.1",
-    "gulp": "^3.8.11",
     "knex": "^0.7.6",
     "koa": "^0.18.1",
     "koa-bodyparser": "^1.4.1",
@@ -18,7 +18,7 @@
     "koa-static": "^1.4.9",
     "koa-views": "^3.0.0",
     "node-pg-migrate": "0.0.9",
-    "pg": "^4.3.0"
+    "pg": "^4.3.0",
   },
   "repository": {
     "type": "git",
