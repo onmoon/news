@@ -9,9 +9,12 @@
 									<p class="h4 font-thin pull-left m-r-sm m-b-sm">Роли</p>
 								</header>
 								<section class="scrollable hover">
-									<div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none">
-										<a href="#" class="list-group-item"
-										 data-ng-repeat="group in groups" data-ng-click="addGroup(group)">
+									<div class="list-group no-radius no-border m-t-n-xxs m-b-none">
+										<a class="list-group-item"
+										 data-ng-repeat="group in groups"
+										 data-ng-class="{'active': group.id === active.group}"
+										 data-ng-click="selectGroup(group)"
+										 data-ng-dblclick="addGroup(group)">
 											{{group.name}}
 										</a>
 									</div>
