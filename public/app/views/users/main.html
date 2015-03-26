@@ -1,0 +1,105 @@
+					<section class="hbox stretch">
+						<aside class="aside b-r b-light bg-light">
+							<section class="vbox">
+								<header class="header clearfix dk b-b b-light">
+									<a class="btn btn-sm btn-link btn-icon pull-right"
+									 data-ng-click="addGroup()">
+										<i class="i i-plus i-2x"></i>
+									</a>
+									<p class="h4 font-thin pull-left m-r-sm m-b-sm">Роли</p>
+								</header>
+								<section class="scrollable hover">
+									<div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none">
+										<a href="#" class="list-group-item"
+										 data-ng-repeat="group in groups" data-ng-click="addGroup(group)">
+											{{group.name}}
+										</a>
+									</div>
+								</section>
+							</section>
+						</aside>
+						<aside class="aside-md b-r b-light bg-light lt">
+							<section class="vbox">
+								<header class="header clearfix bg b-b b-light">
+									<form method="post">
+										<div class="input-group m-t-sm">
+												<input type="text" class="input-sm form-control" placeholder="Поиск">
+												<span class="input-group-btn">
+													<button class="btn btn-sm btn-default" type="submit">
+														<i class="fa fa-search"></i>
+													</button>
+												</span>
+										</div>
+									</form>
+								</header>
+								<section class="scrollable hover">
+									<div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none">
+										<a href="#" class="list-group-item"
+										 data-ng-repeat="user in users">
+											{{user.firstname}} {{user.lastname}}
+										</a>
+									</div>
+								</section>
+							</section>
+						</aside>
+						<section>
+							<header class="header bg-light lter clearfix b-b b-light">
+								<a class="btn btn-sm btn-primary"><i class="i i-pencil"></i> Edit</a>
+							</header>
+							<section class="vbox bg-white">
+								<section class="scrollable wrapper-lg">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="text-center">
+												<img src="images/a6.png" alt="..." class="img-circle m-b">
+												<div>Profile finished</div>
+												<div class="">                             
+													<div class="progress progress-xs inline m-b-none" style="width:128px">
+														<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="80%" style="width: 80%"></div>
+													</div>
+												</div>
+												<p>80%</p>
+											</div>                 
+										</div>
+										<div class="col-md-6">
+											<h3 class="font-bold m-b-none m-t-none">{{user.firstname}} {{user.lastname}}</h3>
+											<p>{{user.email}}</p>
+											<p><i class="fa fa-lg fa-circle-o text-primary m-r-sm"></i><strong>Art Director</strong></p>
+											<ul class="nav nav-pills nav-stacked">
+												<li class="bg-light"><a href="#"><i class="i i-phone m-r-sm"></i> Call Drew</a></li>
+												<li class="bg-light"><a href="#"><i class="i i-mail m-r-sm"></i> Send Email</a></li>
+												<li class="bg-light"><a href="#"><i class="i i-chat m-r-sm"></i> Send Message</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="line b-b m-t m-b"></div>
+									<div class="wrapper m-b">
+										<div class="row m-b">
+											<div class="col-xs-6">
+												<small>Cell Phone</small>
+												<div class="text-lt font-bold">1243 0303 0333</div>
+											</div>
+											<div class="col-xs-6">
+												<small>Family Phone</small>
+												<div class="text-lt font-bold">+32(0) 3003 234 543</div>
+											</div>
+										</div>
+										<div class="row m-b">
+											<div class="col-xs-6">
+												<small>Reporter</small>
+												<div class="text-lt font-bold">Coch Jose</div>
+											</div>
+											<div class="col-xs-6">
+												<small>Manager</small>
+												<div class="text-lt font-bold">James Richo</div>
+											</div>
+										</div>
+										<div>
+											<small>Bio</small>
+											<div class="text-lt">Lorem ipsum dolor sit ame</div>
+										</div>
+									</div>
+								</section>
+							</section>
+						</section>
+					 </section>

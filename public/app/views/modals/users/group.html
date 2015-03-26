@@ -1,0 +1,24 @@
+<div class="modal" tabindex="-1" role="dialog" data-ng-controller="modalUsersGroupCtrl">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-ng-click="$hide()">&times;</button>
+        <h4 class="modal-title">{{ group.id ? 'Изменение роли' : 'Добавление новой роли' }}</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form">
+          <div class="form-group">
+            <input type="text" class="form-control" data-ng-model="group.name" placeholder="Название для новой группы пользователей">    
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-danger pull-left"
+         data-ng-if="group.id"
+         data-ng-click="remove($hide)">Удалить</a>
+        <a href="#" class="btn btn-default" data-ng-click="$hide()">Закрыть</a>
+        <a href="#" class="btn btn-primary" data-ng-click="save($hide)">Сохранить</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

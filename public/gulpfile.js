@@ -3,6 +3,8 @@
 // generated on 2015-03-25 using generator-gulp-webapp 0.3.0
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var url = require('url'); // https://www.npmjs.org/package/url
+var proxy = require('proxy-middleware'); // https://www.npmjs.org/package/proxy-middleware
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
@@ -71,11 +73,15 @@ gulp.task('extras', function () {
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], function () {
+  var proxyOptions = url.parse('http://localhost:1337/api');
+  proxyOptions.route = '/api';
+
   browserSync({
     notify: false,
     port: 9000,
     server: {
       baseDir: ['.tmp', 'app'],
+      middleware: [proxy(proxyOptions)],
       routes: {
         '/bower_components': 'bower_components'
       }
@@ -90,7 +96,7 @@ gulp.task('serve', ['styles', 'fonts'], function () {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.css', ['styles']);
+  gulp.watch('app/styles/**/*.less', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });

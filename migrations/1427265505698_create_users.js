@@ -7,8 +7,9 @@ exports.up = function(pgm) {
 			type : 'text',
 			unique : true
 		},
+		role		: 'integer',
 		password	: 'text'
-	})
+	});
 };
 
 exports.down = function(pgm) {

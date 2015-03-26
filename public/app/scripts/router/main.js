@@ -1,14 +1,12 @@
 'use strict';
-
-angular
-  .module('admin')
-  .config([
+app.config([
     '$stateProvider',
     '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
       $stateProvider
         .state('main', {
-          url: '/',
+          url: '',
+          abstract: true,
           views: {
             'main': {
               templateUrl: 'views/partials/layout.html'
@@ -20,9 +18,16 @@ angular
               templateUrl: 'views/partials/nav.html'
             }
           }
+        })
+        .state('main.index', {
+          url : '/',
+          views: {
+           'content@main': {
+              templateUrl: 'views/dashboard/main.html'
+            } 
+          }
         });
-
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise('/');
 
       }
     ]);

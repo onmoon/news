@@ -1,9 +1,9 @@
 'use strict';
-var news = require('app/models/users');
+var users = require('app/models/users');
 
 module.exports = {
 	create : function* () {
-		console.log(this.request.body);
+		this.body = yield users.create(this.request.body);
 	},
 	admin : function* () {
 		yield this.render('admin/layout', {
@@ -20,5 +20,8 @@ module.exports = {
 			user : 'z'
 		});
 	},
+	list : function* () {
+		this.body = yield users.all();
+	}
 
 }
