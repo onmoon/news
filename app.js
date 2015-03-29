@@ -30,7 +30,7 @@ var middlewareStack = [
 // добавляет объект locals к контексту запроса, в который вы можете записывать все, что угодно
 
 app.use(compose(middlewareStack));
-
+require('./app/lib/mail').init();
 require('./router').init(app);
 
 if (!module.parent) {

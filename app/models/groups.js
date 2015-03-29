@@ -11,6 +11,11 @@ module.exports = {
 			.where('id', id)
 			.del();
 	},
+	update : function (id, data) {
+		return pg('groups')
+			.where('id', id)
+			.update(data);
+	},
 	list: function () {
 		return pg('groups').select('*');
 	}

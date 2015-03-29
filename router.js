@@ -20,6 +20,8 @@ module.exports = {
 		//api
 		router.get('/api/users', usersCtrl.list);
 		router.post('/api/users', usersCtrl.create);
+		router.put('/api/users/:id', usersCtrl.update);
+		router.delete('/api/users/:id', usersCtrl.delete);
 
 
 

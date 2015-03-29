@@ -9,7 +9,7 @@ module.exports = {
 		this.body = yield groups.delete(this.params.id);
 	},
 	update : function* (id) {
-		this.body = yield groups.update(this.params.id);
+		this.body = yield groups.update(this.params.id, this.request.body);
 	},
 	list : function* () {
 		this.body = yield groups.list();

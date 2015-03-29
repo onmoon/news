@@ -6,7 +6,17 @@ module.exports = {
 		return pg('users')
 			.insert(data, '*');
 	},
-	all : function () {
+	delete : function (id) {
+		return pg('users')
+			.where('id', id)
+			.del();
+	},
+	update : function (id, data) {
+		return pg('users')
+			.where('id', id)
+			.update(data);
+	},
+	list : function () {
 		return pg('users').select('*');
 	},
 	one : function () {
