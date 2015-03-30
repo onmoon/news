@@ -11,11 +11,11 @@
 								<section class="scrollable hover">
 									<div class="list-group no-radius no-border m-t-n-xxs m-b-none">
 										<a class="list-group-item"
-										 data-ng-repeat="group in groups"
+										 data-ng-repeat="group in groups.models"
 										 data-ng-class="{'active': group.id === active.group}"
 										 data-ng-click="selectGroup(group)"
 										 data-ng-dblclick="addGroup(group)">
-											{{group.name}}
+											{{group.get('name')}}
 										</a>
 									</div>
 								</section>

@@ -1,16 +1,15 @@
 'use strict';
 var Router = require('koa-router');
 var router = new Router();
+var _ = require('lodash');
 var newsCtrl = require('app/controllers/news');
 var usersCtrl = require('app/controllers/users');
+var categoriesCtrl = require('app/controllers/categories');
+var commentsCtrl = require('app/controllers/comments');
 var groupsCtrl = require('app/controllers/groups');
 
 module.exports = {
 	init : function (app) {
-
-		router.get('/news', newsCtrl.all);
-		router.get('/news/:id', newsCtrl.one);
-
 
 
 		router.get('/admin', usersCtrl.admin);
@@ -18,15 +17,11 @@ module.exports = {
 		router.get('/login', usersCtrl.login);
 
 		//api
-		router.get('/api/users', usersCtrl.list);
-		router.post('/api/users', usersCtrl.create);
-
-
-
-		router.get('/api/groups', groupsCtrl.list);
-		router.post('/api/groups', groupsCtrl.create);
-		router.put('/api/groups/:id', groupsCtrl.update);
-		router.delete('/api/groups/:id', groupsCtrl.delete);
+		rest('users', usersCtrl);
+		rest('news', newsCtrl);
+		rest('categories', categoriesCtrl);
+		rest('comments', commentsCtrl);
+		rest('groups', groupsCtrl);
 
 		app
 			.use(router.routes())
@@ -38,3 +33,16 @@ module.exports = {
 
 	}
 };
+
+function rest(route, ctrl) {
+	var methods = {
+		post : 'create',
+		put  : 'update',
+		get  : 'list',
+		delete : 'delete'
+	};
+	_.each(methods, function (ctrlMethod, routerMethod){
+		var id = routerMethod === 'delete' || routerMethod === 'put';
+		router[routerMethod]('/api/' + route + (id ? '/:id' : ''), ctrl[ctrlMethod]);
+	});
+}

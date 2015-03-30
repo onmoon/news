@@ -13,10 +13,10 @@ app.config([
                 return Restangular.one('users').getList();
               }
             ],
-            groupsResolve: [
-              'Restangular',
-              function (Restangular) {
-                return Restangular.all('groups').getList();
+            groupsCollection: [
+              'RestCollection',
+              function (RestCollection) {
+                return RestCollection('groups').fetch();
               }
             ],
           },
