@@ -59,7 +59,7 @@ app.factory('RestCollection', ['Restangular',
 			};
 			this.new = function () {
 				return new Model({}, this);
-			}
+			};
 		}
 
 		return function (name) {

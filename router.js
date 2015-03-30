@@ -3,6 +3,7 @@ var Router = require('koa-router');
 var router = new Router();
 var _ = require('lodash');
 var newsCtrl = require('app/controllers/news');
+var pagesCtrl = require('app/controllers/pages');
 var usersCtrl = require('app/controllers/users');
 var categoriesCtrl = require('app/controllers/categories');
 var commentsCtrl = require('app/controllers/comments');
@@ -12,9 +13,8 @@ module.exports = {
 	init : function (app) {
 
 
-		router.get('/admin', usersCtrl.admin);
-		router.get('/signin', usersCtrl.signin);
-		router.get('/login', usersCtrl.login);
+		router.get('/signup', pagesCtrl.signup);
+		router.get('/login', pagesCtrl.login);
 
 		//api
 		rest('users', usersCtrl);

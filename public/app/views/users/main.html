@@ -36,10 +36,12 @@
 									</form>
 								</header>
 								<section class="scrollable hover">
-									<div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none">
+									<div class="list-group no-radius no-border m-t-n-xxs m-b-none">
 										<a href="#" class="list-group-item"
-										 data-ng-repeat="user in users">
-											{{user.firstname}} {{user.lastname}}
+										 data-ng-class="{'active': user.id === active.user}"
+										 data-ng-repeat="user in users.models"
+										 data-ng-click="selectUser(user)">
+											{{user.get('firstname')}} {{user.get('lastname')}}
 										</a>
 									</div>
 								</section>

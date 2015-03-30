@@ -1,20 +1,20 @@
 'use strict';
 app
-	.controller('usersMainCtrl', ['$scope','groupsCollection', 'usersResolve', '$modal', 'Restangular',
-	function ( $scope, groupsCollection, usersResolve, $modal, Restangular) {
-		var users = usersResolve.plain();
-
+	.controller('usersMainCtrl', ['$scope','groupsCollection', 'usersCollection', '$modal', 'Restangular',
+	function ( $scope, groupsCollection, usersCollection, $modal, Restangular) {
 		$scope.active = {
 			group : 0
 		};
 		$scope.groups = groupsCollection;
-		$scope.users = users;
-		$scope.user = _.first(users);
+		$scope.users = usersCollection;
 
 		$scope.selectGroup = function (group) {
 			$scope.active.group = group.id;
-			$scope.users = _.filter(users, { role : group.id });
+		//	$scope.users = _.filter(users, { role : group.id });
 		};
+		$scope.selectUser = function (user) {
+			$scope.active.user = user.id;
+		}
 
 		$scope.addGroup = function (group) {
 			$scope.group = group || $scope.groups.new();
