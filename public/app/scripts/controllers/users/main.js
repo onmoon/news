@@ -1,39 +1,23 @@
 'use strict';
 app
-	.controller('usersMainCtrl', ['$scope','groupsResolve', 'usersResolve', '$modal', 'Restangular',
-	function ( $scope, groupsResolve, usersResolve, $modal, Restangular) {
-
-
+	.controller('usersMainCtrl', ['$scope','groupsCollection', 'usersCollection', '$modal', 'Restangular',
+	function ( $scope, groupsCollection, usersCollection, $modal, Restangular) {
 		$scope.active = {
-			group : -1,
-      user : -1
+			group : 0
 		};
-		$scope.groups = groupsResolve;
-		$scope.users = usersResolve.plain();
-		$scope.user = _.first($scope.users);
-    $scope.newUser = {};
+		$scope.groups = groupsCollection;
+		$scope.users = usersCollection;
 
 		$scope.selectGroup = function (group) {
 			$scope.active.group = group.id;
+		//	$scope.users = _.filter(users, { role : group.id });
+		};
+		$scope.selectUser = function (user) {
+			$scope.active.user = user.id;
 		}
-    $scope.selectUser = function (user) {
-      $scope.active.user = user.id;
-      $scope.user = user;
-    }
-    $scope.submit = function () {
-      var request;
-      if($scope.user.id) {
-        request = Restangular.one('users', $scope.user.id).customPUT($scope.user)
-      } else {
-        request = Restangular.all('users').post($scope.user)
-      }
-      request.then(function (res){
-          console.log(res);
-        })
-    }
 
 		$scope.addGroup = function (group) {
-			$scope.group = group || Restangular.restangularizeElement(null , {}, 'groups');
+			$scope.group = group || $scope.groups.new();
 			$modal({
 				scope: $scope,
 				template: 'views/modals/users/group.html',

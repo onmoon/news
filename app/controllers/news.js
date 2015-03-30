@@ -2,10 +2,16 @@
 var news = require('app/models/news');
 
 module.exports = {
-	all : function* all() {
-		this.body = yield news.all();
+	create : function* () {
+		this.body = yield news.create(this.request.body);
 	},
-	one : function* one(id){
-		this.body = yield news.one(id);
+	delete : function* () {
+		this.body = yield news.delete(this.params.id);
+	},
+	update : function* (id) {
+		this.body = yield news.update(this.params.id, this.request.body);
+	},
+	list : function* () {
+		this.body = yield news.list();
 	}
 }

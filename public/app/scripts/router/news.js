@@ -7,12 +7,12 @@ app.config([
         .state('main.news', {
           url : '/news',
           resolve: {
-            // usersResolve: [
-            //   'Restangular',
-            //   function (Restangular) {
-            //     return Restangular.one('users').getList();
-            //   }
-            // ],
+            categoriesCollection: [
+              'RestCollection',
+              function (RestCollection) {
+                return RestCollection('categories').fetch();
+              }
+            ],
             // groupsResolve: [
             //   'Restangular',
             //   function (Restangular) {

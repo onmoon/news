@@ -7,16 +7,16 @@ app.config([
         .state('main.users', {
           url : '/users',
           resolve: {
-            usersResolve: [
-              'Restangular',
-              function (Restangular) {
-                return Restangular.one('users').getList();
+            usersCollection : [
+              'RestCollection',
+              function (RestCollection) {
+                return RestCollection('users').fetch();
               }
             ],
-            groupsResolve: [
-              'Restangular',
-              function (Restangular) {
-                return Restangular.all('groups').getList();
+            groupsCollection: [
+              'RestCollection',
+              function (RestCollection) {
+                return RestCollection('groups').fetch();
               }
             ],
           },
