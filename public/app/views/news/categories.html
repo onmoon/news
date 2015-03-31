@@ -1,0 +1,14 @@
+<section class="vbox">
+	<header class="header bg-light b-b">
+		<p>List groups</p>
+		<a data-ng-click="addCategory()" class="pull-right btn btn-sm btn-primary">Add</a>
+	</header>
+	<section class="scrollable wrapper">
+		<div ng-nestable ng-model="cats">
+			<div>
+				<b>{{$item.name}}</b>
+				({{$item.slug}})
+			</div>
+		</div>
+	</section>
+</section>

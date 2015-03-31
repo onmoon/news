@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('RestCollection', ['Restangular',
+app.factory('restCollection', ['Restangular',
 	function (Restangular){
 
 
@@ -12,27 +12,37 @@ app.factory('RestCollection', ['Restangular',
 			this.attributes = _.extend({}, options);
 			this.get = function (name) {
 				return this.attributes[name];
-			}
+			};
+			this.set = function (key, value) {
+				if(_.isObject(key)) {
+					_.extend(this.attributes, key);
+				} else {
+					this.attributes[key] = value;
+				}
+				return this;
+			};
 			this.update = function () {
 				return this.rest.customPUT(this.attributes);
-			}
+			};
 			this.save = function () {
-				if(this.id) return this.update();
+				if(this.id) {
+					return this.update();
+				}
 				var self = this;
 				return Restangular.all(this.name)
 						.post(this.attributes)
 						.then(function (res){
 							return self.collection.add(res.plain());
 						});
-			}
+			};
 			this.remove = function () {
 				var self = this;
 				return this.rest.remove()
-					.then(function (res){
+					.then(function (){
 						self.collection.remove(self, 1);
 						return true;
 					});
-			}
+			};
 		};
 		var Collection = function (name) {
 			this.name = name;
@@ -54,13 +64,16 @@ app.factory('RestCollection', ['Restangular',
 				}, this);
 				return this;
 			};
+			this.get = function (id) {
+				return _.findWhere(this.models, { id : id });
+			}
 			this.remove = function (model) {
 				this.models = _.without(this.models, model);
 			};
 			this.new = function () {
 				return new Model({}, this);
 			};
-		}
+		};
 
 		return function (name) {
 			return new Collection(name);

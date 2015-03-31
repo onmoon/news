@@ -1,7 +1,7 @@
 'use strict';
 app
-    .controller('newsMainCtrl', ['$scope', '$modal', 'Restangular',
-    function ( $scope, $modal, Restangular) {
+    .controller('newsMainCtrl', ['$scope',
+    function ( $scope) {
 
         $scope.yourModel = {
           customMenu : [

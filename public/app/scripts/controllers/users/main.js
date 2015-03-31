@@ -1,7 +1,7 @@
 'use strict';
 app
-	.controller('usersMainCtrl', ['$scope','groupsCollection', 'usersCollection', '$modal', 'Restangular',
-	function ( $scope, groupsCollection, usersCollection, $modal, Restangular) {
+	.controller('usersMainCtrl', ['$scope','groupsCollection', 'usersCollection', '$modal',
+	function ( $scope, groupsCollection, usersCollection, $modal) {
 		$scope.active = {
 			group : 0
 		};
@@ -15,7 +15,7 @@ app
 		$scope.selectUser = function (user) {
 			$scope.active.user = user.id;
 			$scope.user = user;
-		}
+		};
 
 		$scope.addGroup = function (group) {
 			$scope.group = group || $scope.groups.new();

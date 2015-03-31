@@ -8,9 +8,9 @@ app.config([
           url : '/news',
           resolve: {
             categoriesCollection: [
-              'RestCollection',
-              function (RestCollection) {
-                return RestCollection('categories').fetch();
+              'restCollection',
+              function (restCollection) {
+                return restCollection('categories').fetch();
               }
             ],
             // groupsResolve: [
@@ -25,6 +25,23 @@ app.config([
               controller : 'newsMainCtrl',
               templateUrl: 'views/news/main.html'
             } 
+          }
+        })
+        .state('main.news.categories', {
+          url : '/categories',
+          resolve: {
+            categoriesCollection: [
+              'restCollection',
+              function (restCollection) {
+                return restCollection('categories').fetch();
+              }
+            ],
+          },
+          views : {
+            'content@main' : {
+              controller : 'categoriesMainCtrl',
+              templateUrl : 'views/news/categories.html'
+            }
           }
         });
       }

@@ -8,15 +8,15 @@ app.config([
           url : '/users',
           resolve: {
             usersCollection : [
-              'RestCollection',
-              function (RestCollection) {
-                return RestCollection('users').fetch();
+              'restCollection',
+              function (restCollection) {
+                return restCollection('users').fetch();
               }
             ],
             groupsCollection: [
-              'RestCollection',
-              function (RestCollection) {
-                return RestCollection('groups').fetch();
+              'restCollection',
+              function (restCollection) {
+                return restCollection('groups').fetch();
               }
             ],
           },

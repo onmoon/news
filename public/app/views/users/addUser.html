@@ -40,7 +40,7 @@
   </div>
   <div class="line line-dashed b-b line-lg pull-in"></div>
   <div class="form-group text-right">
-    <a data-ng-click="user.remove();" class="btn btn-danger btn-s-xs">Delete</a>
+    <a data-ng-if="user.id" data-ng-click="user.remove();" class="btn btn-danger btn-s-xs">Delete</a>
     <a data-ng-click="user.save();" class="btn btn-success btn-s-xs">Save</a>
   </div>
 </form>
