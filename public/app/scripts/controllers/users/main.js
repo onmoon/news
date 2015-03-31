@@ -14,6 +14,7 @@ app
 		};
 		$scope.selectUser = function (user) {
 			$scope.active.user = user.id;
+			$scope.user = user;
 		}
 
 		$scope.addGroup = function (group) {
