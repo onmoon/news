@@ -1,6 +1,6 @@
 'use strict';
 app
-    .controller('filesMainCtrl', ['$scope',
-    function ( $scope) {
-    	
+    .controller('filesMainCtrl', ['$scope', 'filesCollection',
+    function ( $scope, filesCollection) {
+    	$scope.files = filesCollection;
     }]);

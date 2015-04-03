@@ -6,14 +6,14 @@ app.config([
       $stateProvider
         .state('main.files', {
           url : '/files',
-          // resolve: {
-          //   filesCollection : [
-          //     'restCollection',
-          //     function (restCollection) {
-          //       return restCollection('files').fetch();
-          //     }
-          //   ]
-          // },
+          resolve: {
+            filesCollection : [
+              'restCollection',
+              function (restCollection) {
+                return restCollection('files').fetch();
+              }
+            ]
+          },
           views: {
            'content@main': {
               controller : 'filesMainCtrl',

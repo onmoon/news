@@ -9,6 +9,10 @@ module.exports = {
 				return _.first(models);
 			});
 	},
+	findOne : function (id) {
+		return pg('categories')
+			.where('id', id);		
+	},
 	delete : function (id) {
 		return pg('categories')
 			.where('id', id)

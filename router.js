@@ -25,6 +25,8 @@ module.exports = {
 		rest('groups', groupsCtrl);
 
 		router.post('/api/upload', filesCtrl.upload);
+		router.get('/api/files', filesCtrl.list);
+		router.get('/api/files/:hash', filesCtrl.getFile);
 
 		app
 			.use(router.routes())
