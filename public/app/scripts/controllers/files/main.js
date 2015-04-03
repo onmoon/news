@@ -1,6 +1,6 @@
 'use strict';
 app
-    .controller('newsMainCtrl', ['$scope',
+    .controller('filesMainCtrl', ['$scope',
     function ( $scope) {
-
+    	
     }]);

@@ -3,8 +3,13 @@ exports.up = function(pgm) {
 		id		: 'id',
 		name	: 'text',
 		slug	: 'text',
-		parent	: 'integer'
+		parent	: {
+			type : 'integer',
+			foreignKey : true,
+			references : 'categories  ON DELETE CASCADE ON UPDATE CASCADE'
+		}
 	});
+	pgm.sql('');
 };
 
 exports.down = function(pgm) {

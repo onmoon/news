@@ -7,7 +7,11 @@ exports.up = function(pgm) {
 			type : 'text',
 			unique : true
 		},
-		role		: 'integer',
+		role		: {
+			type : 'integer',
+			foreignKey : true,
+			references : 'groups'
+		},
 		password	: 'text'
 	});
 };

@@ -8,6 +8,7 @@ var usersCtrl = require('app/controllers/users');
 var categoriesCtrl = require('app/controllers/categories');
 var commentsCtrl = require('app/controllers/comments');
 var groupsCtrl = require('app/controllers/groups');
+var filesCtrl = require('app/controllers/files');
 
 module.exports = {
 	init : function (app) {
@@ -22,6 +23,8 @@ module.exports = {
 		rest('categories', categoriesCtrl);
 		rest('comments', commentsCtrl);
 		rest('groups', groupsCtrl);
+
+		router.post('/api/upload', filesCtrl.upload);
 
 		app
 			.use(router.routes())

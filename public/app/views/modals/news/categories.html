@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-ng-click="$hide()">&times;</button>
-        <h4 class="modal-title">{{ group.id ? 'Изменение роли' : 'Добавление новой роли' }}</h4>
+        <h4 class="modal-title">{{ category.id ? 'Изменение категории' : 'Добавление новой категории' }}</h4>
       </div>
       <div class="modal-body">
         <form class="form">
@@ -21,6 +21,7 @@
             <button type="button" class="form-control btn btn-default"
              ng-model="category.attributes.parent"
              data-animation="am-flip-x"
+             placeholder="Выберите категорию"
              bs-options="cat.id as cat.name group by cat.parent for cat in cats"
              bs-select>
               Action <span class="caret"></span>
@@ -30,7 +31,7 @@
       </div>
       <div class="modal-footer">
         <a href="#" class="btn btn-danger pull-left"
-         data-ng-if="group.id"
+         data-ng-if="category.id"
          data-ng-click="remove($hide)">Удалить</a>
         <a href="#" class="btn btn-default" data-ng-click="$hide()">Закрыть</a>
         <a href="#" class="btn btn-primary" data-ng-click="save($hide)">Сохранить</a>

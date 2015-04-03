@@ -5,6 +5,8 @@ exports.up = function(pgm) {
 		body	: 'text',
 		category: {
 			type : 'integer',
+			foreignKey : true,
+			references : 'categories'
 		}
 	});
 };

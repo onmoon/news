@@ -3,27 +3,30 @@ app
     .controller('categoriesMainCtrl', ['$scope', '$modal', 'categoriesCollection',
     function ( $scope, $modal, categoriesCollection) {
         $scope.categories = categoriesCollection;
-        var cats = _.chain($scope.categories.models)
-                    .pluck('attributes')
-                    .groupBy('parent')
-                    .value();
+        $scope.setCollection = function (collection) {
+            var cats = _.chain(collection.models)
+                        .pluck('attributes')
+                        .groupBy('parent')
+                        .value();
 
-        function recurse(models) {
-            return _.map(models, function (model){
-                var obj = {};
-                    obj.item = model;
-                if(cats[model.id]){
-                    obj.children = recurse(cats[model.id]);
-                }
-                return obj;
-            });
-        }
-        $scope.cats = recurse(cats.null);
+            function recurse(models) {
+                return _.map(models, function (model){
+                    var obj = {};
+                        obj.item = model;
+                    if(cats[model.id]){
+                        obj.children = recurse(cats[model.id]);
+                    }
+                    return obj;
+                });
+            }
+            $scope.cats = recurse(cats.null);
+        };
+        $scope.setCollection($scope.categories);
 
         $scope.$watch('cats', function (newValues){
             function recurse(models, id) {
                 return _.each(models, function (model){
-                    if (model.item.parent != id) {
+                    if (model.item.parent!=id) {
                         model.item.parent = id;
                         categoriesCollection.get(model.item.id).set({ parent : id || null }).save();
                     }
@@ -34,6 +37,16 @@ app
             }
             recurse(newValues);
         });
+
+        $scope.editCategory = function (category) {
+            $scope.addCategory($scope.categories.get(category.id));
+        };
+        $scope.removeCategory = function (category) {
+            $scope.categories.get(category.id).remove()
+                .then(function (){
+                    $scope.setCollection($scope.categories);
+                });
+        };
 
 
         $scope.addCategory = function (category) {

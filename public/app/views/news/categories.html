@@ -1,6 +1,6 @@
 <section class="vbox">
 	<header class="header bg-light b-b">
-		<p>List groups</p>
+		<p>Categories</p>
 		<a data-ng-click="addCategory()" class="pull-right btn btn-sm btn-primary">Add</a>
 	</header>
 	<section class="scrollable wrapper">
@@ -8,6 +8,10 @@
 			<div>
 				<b>{{$item.name}}</b>
 				({{$item.slug}})
+				<span class="pull-right">
+					<a data-ng-mousedown="editCategory($item)"><i class="fa fa-pencil icon-muted fa-fw m-r-xs"></i></a>
+					<a data-ng-mousedown="removeCategory($item)"><i class="fa fa-times icon-muted fa-fw"></i></a>
+				</span>
 			</div>
 		</div>
 	</section>

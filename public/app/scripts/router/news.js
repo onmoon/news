@@ -29,18 +29,19 @@ app.config([
         })
         .state('main.news.categories', {
           url : '/categories',
-          resolve: {
-            categoriesCollection: [
-              'restCollection',
-              function (restCollection) {
-                return restCollection('categories').fetch();
-              }
-            ],
-          },
           views : {
             'content@main' : {
               controller : 'categoriesMainCtrl',
               templateUrl : 'views/news/categories.html'
+            }
+          }
+        })
+        .state('main.news.posts', {
+          url : '/posts',
+          views : {
+            'content@main' : {
+              controller : 'postsMainCtrl',
+              templateUrl : 'views/news/posts.html'
             }
           }
         });

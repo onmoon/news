@@ -66,7 +66,7 @@ app.factory('restCollection', ['Restangular',
 			};
 			this.get = function (id) {
 				return _.findWhere(this.models, { id : id });
-			}
+			};
 			this.remove = function (model) {
 				this.models = _.without(this.models, model);
 			};
