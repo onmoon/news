@@ -1,7 +1,9 @@
           <section class="vbox">
             <header class="header bg-light lt b-b b-light">
               <p class="h4 font-thin pull-left m-r m-b-sm">Medias</p>
-              <a class="btn btn-sm btn-info btn-rounded btn-icon"><i class="i i-cloud-upload"></i></a>
+              <a class="btn btn-sm btn-info btn-rounded btn-icon" data-ng-click="openUpload()">
+                <i class="i i-cloud-upload"></i>
+              </a>
               <form method="post" class="m-t-sm pull-right pull-none-xs input-s-lg m-b-sm">
                 <div class="input-group">
                     <input type="text" id="address" name="address" class="input-sm form-control" placeholder="Search">
@@ -14,7 +16,7 @@
             <section class="scrollable wrapper">
               <div class="row">
                 <div class="col-md-3 col-md-push-9">
-                  <div class="panel">
+<!--              <div class="panel">
                     <div class="panel-heading b-b">Filter</div>
                     <div class="panel-body">
                       <ul class="list-unstyled m-t-n-sm">
@@ -74,10 +76,12 @@
                       </ul>
                     </div>
                   </div>
-                </div>
+ -->            </div>
                 <div class="col-md-9 col-md-pull-3">
                   <div class="row row-sm">
-                    <div class="col-xs-6 col-sm-4 col-md-3" data-ng-repeat="file in files.models">
+                    <div class="col-xs-6 col-sm-4 col-md-3"
+                     data-ng-click="openPopup(file)"
+                     data-ng-repeat="file in files.models">
                       <div class="thumbnail">
                         <a href="#"><img ng-src="{{'/api/files/' + file.get('hash')}}" alt=""></a>
                         <div class="caption">
@@ -85,7 +89,6 @@
                         </div>
                       </div>
                     </div>
-
                   </div>
                   <div>
                     <div class="btn-group m-r">
