@@ -6,7 +6,20 @@
         <h4 class="modal-title">Загрузка новых файлов</h4>
       </div>
       <div class="modal-body">
-        
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="dropfile" upload-file>
+                <small>Drag and Drop file here
+                <span>Or select file
+                  <input type="file" data-ng-model="model" data-ng-change="upload($event)">
+                </span>
+                </small>
+                <a href="" class="btn">btn</a>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <a href="#" class="btn btn-default" data-ng-click="$hide()">Закрыть</a>

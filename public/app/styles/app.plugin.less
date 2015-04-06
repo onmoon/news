@@ -5,9 +5,40 @@
   }
 }
 
-.dropfile{border:2px dashed #e0e4e8;text-align: center;min-height: 20px}
-.dropfile.hover{border-color: #aac3cc}
-.dropfile small{margin: 50px 0;display: block}
+.dropfile{
+  border:2px dashed #e0e4e8;
+  text-align: center;
+  min-height: 20px;
+}
+.dropfile.hover{
+  border-color: #aac3cc;
+}
+.dropfile small{
+  margin: 50px 0;
+  display: block;
+}
+.dropfile span {
+  position: relative;
+  display: block;
+  color: lighten(@brand-primary,20%);
+  &:hover {
+    color:  @brand-primary;
+  }
+  & > input {
+    width: 100%;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+}
+.dropfile img {
+  max-width: 100%;
+}
+
 .portlet{min-height: 30px;}
 
 /*Charts*/
