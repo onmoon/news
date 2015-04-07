@@ -2,6 +2,7 @@
 var Router = require('koa-router');
 var router = new Router();
 var _ = require('lodash');
+var SocketIO = require('socket.io');
 var newsCtrl = require('app/controllers/news');
 var pagesCtrl = require('app/controllers/pages');
 var usersCtrl = require('app/controllers/users');
@@ -12,8 +13,6 @@ var filesCtrl = require('app/controllers/files');
 
 module.exports = {
 	init : function (app) {
-
-
 		router.get('/signup', pagesCtrl.signup);
 		router.get('/login', pagesCtrl.login);
 
@@ -26,6 +25,7 @@ module.exports = {
 
 		router.post('/api/upload', filesCtrl.upload);
 		router.get('/api/files', filesCtrl.list);
+		router.delete('/api/files/:id', filesCtrl.delete);
 		router.get('/api/files/:hash', filesCtrl.getFile);
 
 		app
@@ -34,7 +34,15 @@ module.exports = {
 			.use(function*(){
 				this.status = 404;
 				yield this.render('pages/404')
-			})
+			});
+	},
+	initSocket : function (app) {
+		app.io.on('connection', function (){
+			console.log('Websockets connection');
+		})
+		app.io.route('join', function* (next, message) {
+			console.log(message);
+		});
 
 	}
 };

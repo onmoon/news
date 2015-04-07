@@ -76,12 +76,15 @@ gulp.task('serve', ['styles', 'fonts'], function () {
   var proxyOptions = url.parse('http://localhost:1337/api');
   proxyOptions.route = '/api';
 
+  var socketOptions = url.parse('http://localhost:1337/socket.io');
+  socketOptions.route = '/socket.io';
+
   browserSync({
     notify: false,
     port: 9000,
     server: {
       baseDir: ['.tmp', 'app'],
-      middleware: [proxy(proxyOptions)],
+      middleware: [proxy(proxyOptions), proxy(socketOptions)],
       routes: {
         '/bower_components': 'bower_components'
       }

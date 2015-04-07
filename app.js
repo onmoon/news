@@ -1,7 +1,8 @@
 'use strict';
 
-var koa = require('koa');
+var koa = require('koa.io');
 var path = require('path');
+var router = require('./router');
 
 var compose = require('koa-compose');
 // эта утилита позволяет композировать набор middleware`й в одну
@@ -31,9 +32,10 @@ var middlewareStack = [
 
 app.use(compose(middlewareStack));
 require('./app/lib/mail').init();
-require('./router').init(app);
+router.init(app);
+router.initSocket(app);
 
 if (!module.parent) {
-  app.listen(port);
-  console.log('listening on port 1337');
+	app.listen(port);
+	console.log('listening on port ' + port);
 }

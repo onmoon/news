@@ -1,7 +1,7 @@
 'use strict';
 app
-	.controller('postsMainCtrl', ['$scope', '$modal', 'categoriesCollection',
-	function ($scope, $modal, categoriesCollection) {
+	.controller('postsMainCtrl', ['$scope',
+	function ($scope) {
 		
         $scope.yourModel = {
           customMenu : [

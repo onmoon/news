@@ -83,9 +83,12 @@
                      data-ng-click="openPopup(file)"
                      data-ng-repeat="file in files.models">
                       <div class="thumbnail">
+                        <a data-ng-click="file.remove()" class="pull-right"><i class="fa fa-times icon-muted fa-fw"></i></a>
                         <a href="#"><img ng-src="{{'/api/files/' + file.get('hash')}}" alt=""></a>
                         <div class="caption">
-                          <p class="text-ellipsis m-b-none">{{file.get('name')}}</p>
+                          <p class="text-ellipsis m-b-none">
+                            {{file.get('name')}}
+                          </p>
                         </div>
                       </div>
                     </div>

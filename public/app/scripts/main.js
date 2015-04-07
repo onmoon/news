@@ -8,7 +8,8 @@ var app = angular.module('admin', [
     'restangular',
     'wysiwyg.module',
     'ng-nestable',
-  ]).config(['RestangularProvider', '$nestableProvider', function (RestangularProvider, nestableProvider){
+  ]).config(['RestangularProvider', '$nestableProvider',
+  	function (RestangularProvider, nestableProvider) {
 
   	RestangularProvider.setBaseUrl('/api');
   	nestableProvider.defaultOptions({
@@ -29,4 +30,7 @@ var app = angular.module('admin', [
 		maxDepth        : 5,
 		threshold       : 20
   	});
-  }]);
+
+
+
+}]);

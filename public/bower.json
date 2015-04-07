@@ -13,6 +13,7 @@
     "angular-bootstrap-colorpicker": "~3.0.13",
     "angular-wysiwyg": "~1.1.16",
     "ng-nestable": "~0.0.1",
-    "jquery-nestable": "~0.0.1"
+    "jquery-nestable": "~0.0.1",
+    "socket.io-client": "~1.3.5"
   }
 }

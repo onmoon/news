@@ -31,7 +31,10 @@ module.exports = {
 		}
 		this.body = yield files.create(fileNames);
   	},
-  	remove : function* (next) {
-
+  	delete : function* (next) {
+  		this.body = yield files.findOne(this.params.id).then(function (file){
+			fs.unlinkSync(config.uploadDir + file.hash);
+			return files.delete(file.id);
+		});
   	}
 }
