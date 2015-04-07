@@ -8,9 +8,9 @@ var app = angular.module('admin', [
     'restangular',
     'wysiwyg.module',
     'ng-nestable',
-  ]).config(['RestangularProvider', '$nestableProvider',
+])
+.config(['RestangularProvider', '$nestableProvider',
   	function (RestangularProvider, nestableProvider) {
-
   	RestangularProvider.setBaseUrl('/api');
   	nestableProvider.defaultOptions({
 		listNodeName    : 'ol',
@@ -30,7 +30,7 @@ var app = angular.module('admin', [
 		maxDepth        : 5,
 		threshold       : 20
   	});
-
-
-
+}])
+.controller('MainAppCtrl',['$scope', 'socket', function ($scope, socket) {
+	$scope.socket = socket;
 }]);

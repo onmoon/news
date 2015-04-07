@@ -9,7 +9,8 @@ app.config([
           abstract: true,
           views: {
             'main': {
-              templateUrl: 'views/partials/layout.html'
+              templateUrl: 'views/partials/layout.html',
+              controller: 'MainAppCtrl'
             },
             'header@main': {
               templateUrl: 'views/partials/header.html'

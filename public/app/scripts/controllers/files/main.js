@@ -1,12 +1,9 @@
 'use strict';
 app
-    .controller('filesMainCtrl', ['$scope', '$modal', 'filesCollection', 'socket',
-    function ( $scope, $modal, filesCollection, socket) {
+    .controller('filesMainCtrl', ['$scope', '$modal', 'filesCollection',
+    function ( $scope, $modal, filesCollection) {
     	$scope.files = filesCollection;
-		socket.emit('join', {
-			ua: navigator.userAgent,
-			time: new Date()
-		});
+
     	$scope.openUpload = function () {
 			$modal({
 				scope: $scope,

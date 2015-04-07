@@ -63,6 +63,7 @@
         this.masterTimer = setInterval(set, 2000);
         this.initSockets();
         this.addListeners();
+        console.log('set master');
     };
 
     Socket.prototype.addListeners = function () {
@@ -92,6 +93,7 @@
         }
         this.slaveTimer = setInterval(checkMaster, 5000);
         checkMaster();
+        console.log('set slave');
     };
 
     Socket.prototype.on = function (e, callback) {

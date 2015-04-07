@@ -37,9 +37,15 @@ module.exports = {
 			});
 	},
 	initSocket : function (app) {
-		app.io.on('connection', function (){
-			console.log('Websockets connection');
-		})
+		var count = 0;
+		app.io.on('connection', function (socket){
+			count++;
+			console.log('Websocket\'s connection:' + count);
+			socket.on('disconnect', function (){
+				count--;
+				console.log('Websocket\'s connection:' + count);
+			});
+		});
 		app.io.route('join', function* (next, message) {
 			console.log(message);
 		});
