@@ -3,11 +3,14 @@ var Router = require('koa-router');
 var router = new Router();
 var _ = require('lodash');
 var SocketIO = require('socket.io');
+var rabbit = require('app/lib/adapter').rabbit;
+var passport = require('koa-passport');
 var newsCtrl = require('app/controllers/news');
 var pagesCtrl = require('app/controllers/pages');
 var usersCtrl = require('app/controllers/users');
 var categoriesCtrl = require('app/controllers/categories');
 var commentsCtrl = require('app/controllers/comments');
+var weatherCtrl = require('app/controllers/weather');
 var groupsCtrl = require('app/controllers/groups');
 var filesCtrl = require('app/controllers/files');
 
@@ -15,6 +18,7 @@ module.exports = {
 	init : function (app) {
 		router.get('/signup', pagesCtrl.signup);
 		router.get('/login', pagesCtrl.login);
+		router.get('/', pagesCtrl.index);
 
 		//api
 		rest('users', usersCtrl);
@@ -33,12 +37,62 @@ module.exports = {
 			.use(router.allowedMethods())
 			.use(function*(){
 				this.status = 404;
-				yield this.render('pages/404')
+				yield this.render('pages/404', {
+					user : this.passport.user
+				})
 			});
+	},
+	initPassport : function (app) {
+		// POST /login
+		router.post('/login',
+			passport.authenticate('local', {
+				successRedirect: '/',
+				failureRedirect: '/404'
+			})
+		);
+
+		router.get('/logout', function*(next) {
+			this.logout();
+			this.redirect('/');
+		});
+
+		router.get('/auth/vk', passport.authenticate('vkontakte'));
+		router.get('/auth/vk/callback',
+			passport.authenticate('vkontakte', {
+				successRedirect: '/',
+				failureRedirect: '/404'
+			})
+		);
+
+		router.get('/auth/facebook', passport.authenticate('facebook'));
+		router.get('/auth/facebook/callback',
+			passport.authenticate('facebook', {
+				successRedirect: '/',
+				failureRedirect: '/404'
+			})
+		);
+
+		router.get('/auth/twitter', passport.authenticate('twitter'));
+		router.get('/auth/twitter/callback',
+			passport.authenticate('twitter', {
+				successRedirect: '/',
+				failureRedirect: '/404'
+			})
+		);
+
+		router.get('/auth/google', passport.authenticate('google'));
+		router.get('/auth/google/callback',
+			passport.authenticate('google', {
+				successRedirect: '/',
+				failureRedirect: '/404'
+			})
+		);
+
+		app.use(router.middleware());
 	},
 	initSocket : function (app) {
 		var count = 0;
-		app.io.on('connection', function (socket){
+		app.io.on('connection', function (socket) {
 			count++;
 			console.log('Websocket\'s connection:' + count);
 			socket.on('disconnect', function (){
@@ -46,11 +100,14 @@ module.exports = {
 				console.log('Websocket\'s connection:' + count);
 			});
 		});
-		app.io.route('join', function* (next, message) {
-			console.log(message);
+		
+		app.io.route('join', function* () {
+			var request = yield weatherCtrl.current();
+			this.socket.emit('weather', JSON.parse(request.body));
 		});
 
-	}
+	},
+
 };
 
 function rest(route, ctrl) {

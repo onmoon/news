@@ -13,12 +13,12 @@ app.config([
                 return restCollection('categories').fetch();
               }
             ],
-            // groupsResolve: [
-            //   'Restangular',
-            //   function (Restangular) {
-            //     return Restangular.all('groups').getList();
-            //   }
-            // ],
+            newsCollection: [
+              'restCollection',
+              function (restCollection) {
+                return restCollection('news').fetch();
+              }
+            ],
           },
           views: {
            'content@main': {

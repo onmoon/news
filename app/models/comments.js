@@ -1,5 +1,5 @@
 'use strict';
-var pg = require('app/lib/adapter');
+var pg = require('app/lib/adapter').pg;
 var _ = require('lodash');
 module.exports = {
 	create : function (data) {

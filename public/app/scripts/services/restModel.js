@@ -70,8 +70,8 @@ app.factory('restCollection', ['Restangular',
 			this.remove = function (model) {
 				this.models = _.without(this.models, model);
 			};
-			this.new = function () {
-				return new Model({}, this);
+			this.new = function (options) {
+				return new Model(options || {}, this);
 			};
 		};
 

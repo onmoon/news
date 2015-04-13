@@ -19,6 +19,17 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
+gulp.task('astrastyles', function () {
+  return gulp.src('app/styles/astra.less')
+    .pipe($.less())
+    .pipe($.sourcemaps.init())
+    .pipe($.postcss([
+      require('autoprefixer-core')({browsers: ['last 1 version']})
+    ]))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('../build/styles'))
+    .pipe(reload({stream: true}));
+});
 
 gulp.task('jshint', function () {
   return gulp.src('app/scripts/**/*.js')
@@ -99,11 +110,18 @@ gulp.task('serve', ['styles', 'fonts'], function () {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/styles/**/*.less', ['styles']);
+  gulp.watch('app/styles/**/*.less', ['styles', 'astrastyles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
+gulp.task('astraserve', ['astrastyles'], function () {
+  browserSync({
+    proxy: "http://localhost:1337"
+  });
+
+  gulp.watch('app/styles/**/*.less', ['astrastyles'],browserSync.reload);
+});
 // inject bower components
 gulp.task('wiredep', function () {
   var wiredep = require('wiredep').stream;

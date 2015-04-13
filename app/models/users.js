@@ -1,5 +1,5 @@
 'use strict';
-var pg = require('app/lib/adapter');
+var pg = require('app/lib/adapter').pg;
 
 module.exports = {
 	create : function (data) {

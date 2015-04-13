@@ -4,10 +4,12 @@
   "description": "News portal on Koa.js",
   "main": "app.js",
   "scripts": {
+    "start": "NODE_PATH=. node --harmony app.js",
     "gulp": "gulp",
-    "test": "mocha"
+    "test": "NODE_PATH=. mocha --harmony"
   },
   "dependencies": {
+    "co": "^4.5.1",
     "co-busboy": "^1.3.0",
     "co-fs": "^1.2.0",
     "ejs": "^2.3.1",
@@ -16,14 +18,24 @@
     "koa": "^0.18.1",
     "koa-bodyparser": "^1.4.1",
     "koa-compose": "^2.3.0",
+    "koa-generic-session": "^1.8.0",
     "koa-logger": "^1.2.2",
+    "koa-passport": "^1.1.5",
+    "koa-redis": "^1.0.0",
+    "koa-request": "^1.0.0",
     "koa-router": "^4.2.0",
     "koa-static": "^1.4.9",
     "koa-views": "^3.0.0",
     "koa.io": "0.0.3",
     "lodash": "^3.6.0",
     "nodemailer": "^1.3.2",
+    "passport-facebook": "^2.0.0",
+    "passport-google-auth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.3",
+    "passport-vkontakte": "^0.3.0",
     "pg": "^4.3.0",
+    "rmqlite": "git+https://git@github.com:KealPub/node-rabbit-lite.git",
     "socket.io": "^1.3.5"
   },
   "repository": {

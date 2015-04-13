@@ -6,7 +6,7 @@ exports.up = function(pgm) {
 		parent	: {
 			type : 'integer',
 			foreignKey : true,
-			references : 'categories  ON DELETE CASCADE ON UPDATE CASCADE'
+			references : 'categories ON DELETE CASCADE ON UPDATE CASCADE'
 		}
 	});
 	pgm.sql('');

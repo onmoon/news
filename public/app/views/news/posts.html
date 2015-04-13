@@ -1,14 +1,42 @@
 <section class="vbox">
 	<section class="scrollable wrapper">
-	<wysiwyg
- textarea-id="question"
- textarea-class="form-control"
- textarea-height="80px"
- textarea-name="textareaQuestion"
- textarea-required
- ng-model="yourModel.model"
- enable-bootstrap-title="true"
- textarea-menu="{{yourModel.customMenu}}">
-</wysiwyg>
+		<div class="panel">
+			<div class="panel-heading bg-light no-border">
+				<span class="h4 text-lt m-t-sm m-b-sm block font-bold">Add new post</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label>Title</label>
+					<input type="text" class="form-control" placeholder="Title">
+				</div>
+				<div class="form-group">
+					<label>Body</label>
+					<wysiwyg
+					 textarea-id="question"
+					 textarea-class="form-control"
+					 textarea-height="80px"
+					 textarea-name="textareaQuestion"
+					 textarea-required
+					 ng-model="newPost.body"
+					 enable-bootstrap-title="true"
+					 textarea-menu="{{redactor.customMenu}}">
+					</wysiwyg>
+				</div>
+				<div class="form-group">
+					<label>Category</label>
+					<button type="button" class="form-control btn btn-default"
+					 ng-model="newPost.category"
+					 data-animation="am-flip-x"
+					 placeholder="Выберите категорию"
+					 bs-options="cat.id as cat.name group by cat.parent for cat in cats"
+					 bs-select>
+						Action <span class="caret"></span>
+					</button>
+				</div>
+				<div class="form-group">
+					<a href="" class="btn btn-primary" data-ng-click="save()">Save</a>
+				</div>
+			</div>
+		</div>
 	</section>
 </section>
