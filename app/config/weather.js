@@ -6,5 +6,7 @@ module.exports = {
 		default : 'astrakhan',
 		astrakhan : 580497
 	},
-	tempTime : 1800 //полчаса
+	redisKey : 'weather', 
+	//         min  sec  msec
+	tempTime : 30 * 60 * 1000 //полчаса
 }

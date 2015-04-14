@@ -4,6 +4,13 @@
 	font-size: 12px;
 	height: 90px;
 	padding: 15px 0;
+	&-icon {
+		width: 32px;
+		height: 32px;
+		stroke : #000;
+		display: block;
+		margin: 0 auto 5px;
+	}
 	&-left {
 		&-menu {
 			margin-bottom: 0;
@@ -14,6 +21,19 @@
 	}
 	&-center {
 		text-align: center;
+		&_logo {
+			width: 48px;
+			height: 48px;
+			stroke : #000;
+			&:hover {
+				.sun {
+					stroke: @main-success-color;
+				}
+				.sunset {
+					stroke: @main-info-color;
+				}
+			}
+		}
 	}
 	&-right {
 		&-menu {
@@ -22,18 +42,16 @@
 			line-height: 60px;
 			&-item {
 				line-height: normal;
+				font-size: 12px;
 				vertical-align: middle;
 				margin: 10px;
 				display: inline-block;
-				& .fa {
-					color: black;
+				a {
 					display: block;
-					text-align: center;
-					font-size: 2em;
-					margin-bottom: 5px;
-					font-weight: thin;
+					&:hover .icon {
+						stroke: @main-info-color;
+					}
 				}
-				&:hover .fa {color: inherit;}
 			}
 		}
 		
@@ -42,12 +60,17 @@
 .navMenu {
 	text-transform: uppercase;
 	font-size: 15px;
+	font-weight: 500;
 	&-menu {
 		overflow: hidden;
-		border-top: 2px solid #f6f6f6;
-		padding: 5px;
+		border-top: 1px solid #f6f6f6;
+		padding: 10px 5px;
 		&-item {
+			color: @main-info-color;
 			margin-right: 20px;
+			&:hover {
+				color: @main-success-color;
+			}
 		}
 	}
 }

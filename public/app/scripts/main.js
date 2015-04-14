@@ -34,7 +34,7 @@ var app = angular.module('admin', [
 .controller('MainAppCtrl',['$scope', 'socket', function ($scope, socket) {
 	$scope.socket = socket;
 	$scope.socket.on('weather', function (res){
-		debugger
+		$scope.weather = res;
 	});
 	$scope.socket.emit('join', {});
 

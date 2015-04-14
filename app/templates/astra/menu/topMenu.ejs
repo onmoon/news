@@ -13,20 +13,38 @@
 			</ul>
 		</div>
 		<div class="col-sm-6 topMenu-center">
-		§	
+			<svg class="topMenu-center_logo">
+				<use class="sun" xlink:href="#sun"></use>
+				<use class="sunset" xlink:href="#sunset"></use>
+			</svg>
 		</div>
 		<div class="col-sm-3 topMenu-right">
 			<ul class="list-unstyled topMenu-right-menu">
 				<li class="topMenu-right-menu-item">
-					<a href="#"><i class="fa fa-search"></i>Поиск</a>
+					<a href="#">
+					<svg class="topMenu-icon">
+						<use class="icon" xlink:href="#profile"></use>
+					</svg>
+					Поиск
+					</a>
 				</li>
 				<% if (user) {%>
 				<li class="topMenu-right-menu-item">
-					<a href="/logout"><i class="fa fa-user"></i>Выйти</a>
+					<a href="/logout">
+					<svg class="topMenu-icon">
+						<use class="icon" xlink:href="#profile"></use>
+					</svg>
+					Выйти
+					</a>
 				</li>
 				<% } else { %>
 				<li class="topMenu-right-menu-item">
-					<a href="/login"><i class="fa fa-user"></i>Войти</a>
+					<a href="/login">
+					<svg class="topMenu-icon">
+						<use class="icon" xlink:href="#profile"></use>
+					</svg>
+					Войти
+					</a>
 				</li>
 				<% } %>
 			</ul>

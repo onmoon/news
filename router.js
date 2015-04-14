@@ -101,9 +101,9 @@ module.exports = {
 			});
 		});
 		
-		app.io.route('join', function* () {
-			var request = yield weatherCtrl.current();
-			this.socket.emit('weather', JSON.parse(request.body));
+		app.io.route('join', function* updateWeather() {
+			var body = yield weatherCtrl.current();
+			this.socket.emit('weather',body);
 		});
 
 	},
