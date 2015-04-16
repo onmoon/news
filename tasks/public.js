@@ -65,6 +65,6 @@ gulp.task('serve', ['styles', 'fonts'], function () {
     	'./public/app/**/*'
 	]).on('change', reload);
 
-	gulp.watch(paths.srcsStyles, ['styles']);
-	gulp.watch(paths.srcFonts, ['fonts']);
+	gulp.watch(paths.srcsStyles, ['styles'], reload);
+	gulp.watch(paths.srcFonts, ['fonts'], reload);
 });
