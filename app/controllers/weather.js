@@ -25,7 +25,7 @@ module.exports = {
 	current : function () {
 		return Q.promise(function (done, fail) {
 			var key = [config.redisKey, ':current:', config.cities.default].join('');
-			var url = config.currentWeatherURL + ['?', 'id', '=', config.cities[config.cities.default]].join('');
+			var url = config.currentWeatherURL + ['?', 'id', '=', config.cities[config.cities.default], '&units=metric'].join('');
 			//check redis on weather data
 			client.get(key, function (err, data) {				
 				if(err) return fail(err);

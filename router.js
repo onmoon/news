@@ -101,7 +101,7 @@ module.exports = {
 			});
 		});
 		
-		app.io.route('join', function* updateWeather() {
+		app.io.route('join', function* () {
 			var body = yield weatherCtrl.current();
 			this.socket.emit('weather',body);
 		});

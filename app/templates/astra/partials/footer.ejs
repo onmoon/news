@@ -1,3 +1,15 @@
 	</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	var socket = window.io.connect({
+		url : window.location.origin.replace(window.location.port, '1337')
+	});
+	socket.on('weather', function (res){
+		$('.post-weather_title').text(res.main.temp);
+	});
+	socket.emit('join');
+
+</script>
 </body>
 </html>

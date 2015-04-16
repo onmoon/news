@@ -13,7 +13,7 @@ var env = process.env.NODE_ENV || 'development';
 // выглядит знакомо
 
 var projectRoot = __dirname;
-var staticRoot = path.join(projectRoot, 'build');
+var staticRoot = path.join(projectRoot, './public/.tmp/');
 var templateRoot = path.join(projectRoot, 'app/templates');
 
 var session = require('koa-generic-session');

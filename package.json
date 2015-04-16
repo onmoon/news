@@ -5,7 +5,6 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_PATH=. node --harmony app.js",
-    "gulp": "gulp",
     "test": "NODE_PATH=. mocha --harmony"
   },
   "dependencies": {
@@ -22,7 +21,6 @@
     "koa-generic-session": "^1.8.0",
     "koa-logger": "^1.2.2",
     "koa-passport": "^1.1.5",
-    "koa-redis": "^1.0.0",
     "koa-request": "^1.0.0",
     "koa-router": "^4.2.0",
     "koa-static": "^1.4.9",
@@ -52,8 +50,22 @@
   },
   "homepage": "https://github.com/onmoon/news",
   "devDependencies": {
-    "node-pg-migrate": "0.0.9",
+    "autoprefixer-core": "^5.1.9",
+    "browser-sync": "^2.6.4",
     "co-mocha": "^1.1.0",
-    "mocha": "^2.2.1"
+    "gulp": "^3.8.11",
+    "gulp-if": "^1.2.5",
+    "gulp-jshint": "^1.10.0",
+    "gulp-less": "^3.0.2",
+    "gulp-plumber": "^1.0.0",
+    "gulp-postcss": "^5.1.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "main-bower-files": "^2.6.2",
+    "mocha": "^2.2.1",
+    "node-pg-migrate": "0.0.9",
+    "proxy-middleware": "^0.11.0",
+    "require-dir": "^0.3.0",
+    "url": "^0.10.3",
+    "wiredep": "^2.2.2"
   }
 }
