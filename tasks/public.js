@@ -1,6 +1,7 @@
 /*global -$ */
 'use strict';
 var gulp = require('gulp');
+var rename = require('gulp-rename');
 var wiredep = require('wiredep').stream;
 var mainBowerFiles = require('main-bower-files');
 
@@ -12,6 +13,9 @@ var autoprefixer = require('autoprefixer-core');
 // jshint
 var gulpif = require('gulp-if');
 var jshint = require('gulp-jshint');
+// images
+var svgstore = require('gulp-svgstore');
+var svgmin = require('gulp-svgmin');
 // watch serve
 var url = require('url'); // https://www.npmjs.org/package/url
 var proxy = require('proxy-middleware'); // https://www.npmjs.org/package/proxy-middleware
@@ -19,13 +23,19 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 var paths = {
-  srcStyles : './public/app/styles/app.less',
-  srcsStyles: './public/app/styles/**/*.less',
-  srcJs     : './public/app/scripts/**/*.js',
-  srcFonts  : './public/app/fonts/**/*',
+  srcStyles         : './public/app/styles/app.less',
+  srcsStyles        : './public/app/styles/**/*.less',
+  srcJs             : './public/app/scripts/**/*.js',
+  srcFonts          : './public/app/fonts/**/*',
+  srcSvg            : './public/app/images/svg/**/*.svg',
+  srcWeatherImages  : './public/app/images/weather/**/*.svg',
 
-  tmpStyles : './public/.tmp/styles',
-  tmpFonts  : './public/.tmp/fonts',
+
+  tmpWeatherImages  : './public/.tmp/images/weather',
+  tmpStyles         : './public/.tmp/styles',
+  tmpJs             : './public/.tmp/scripts',
+  tmpFonts          : './public/.tmp/fonts',
+  tmpSvg            : './public/.tmp/images/svg',
 };
 
 gulp.task('styles', function () {
@@ -55,16 +65,48 @@ gulp.task('jshint', function () {
     .pipe(gulpif(!browserSync.active, jshint.reporter('fail')));
 });
 
-gulp.task('serve', ['styles', 'fonts'], function () {
+gulp.task('scripts', function () {
+  return gulp.src(paths.srcJs)
+    .pipe(gulp.dest(paths.tmpJs));
+});
+gulp.task('imagesWeather', function () {
+  return gulp.src(paths.srcWeatherImages)
+    .pipe(gulp.dest(paths.tmpWeatherImages));
+});
+
+gulp.task('svgstore', function () {
+    return gulp
+        .src(paths.srcSvg, { base: 'src/svg' })
+        .pipe(svgmin({
+          plugins: [{
+                removeDoctype: false
+            }, {
+                removeComments: false
+            }]
+        }))
+        .pipe(rename({prefix: 'icon-'}))
+        .pipe(rename(function (path) {
+            var name = path.dirname.split(path.sep);
+            name.push(path.basename);
+            path.basename = name.join('-');
+        }))
+        .pipe(svgstore())
+
+        .pipe(gulp.dest(paths.tmpSvg));
+});
+
+gulp.task('serve', ['styles', 'svgstore','scripts','imagesWeather', 'fonts'], function () {
  	browserSync({
 		proxy: "http://localhost:1337"
 	});
-
+  gulp.watch(paths.srcsStyles, ['styles'], reload);
+  gulp.watch(paths.srcJs, ['scripts'], reload);
+  gulp.watch(paths.srcFonts, ['fonts'], reload);
+  gulp.watch('./app/templates/astra/**/*', ['styles'], reload);
 	// watch for changes
-	gulp.watch([
-    	'./public/app/**/*'
-	]).on('change', reload);
+	// gulp.watch([
+ //    	'./public/app/**/*'
+	// ]).on('change', reload);
 
-	gulp.watch(paths.srcsStyles, ['styles'], reload);
-	gulp.watch(paths.srcFonts, ['fonts'], reload);
+
 });

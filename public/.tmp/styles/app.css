@@ -3213,26 +3213,26 @@ fieldset[disabled] .btn-success.active {
 }
 .btn-info {
   color: #ffffff;
-  background-color: #88c8e1;
-  border-color: #74bfdc;
+  background-color: skyblue;
+  border-color: #71c5e7;
 }
 .btn-info:focus,
 .btn-info.focus {
   color: #ffffff;
-  background-color: #5fb5d7;
-  border-color: #2a83a6;
+  background-color: #5bbce4;
+  border-color: #1f8dba;
 }
 .btn-info:hover {
   color: #ffffff;
-  background-color: #5fb5d7;
-  border-color: #43a8d0;
+  background-color: #5bbce4;
+  border-color: #3db0df;
 }
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
   color: #ffffff;
-  background-color: #5fb5d7;
-  border-color: #43a8d0;
+  background-color: #5bbce4;
+  border-color: #3db0df;
 }
 .btn-info:active:hover,
 .btn-info.active:hover,
@@ -3244,8 +3244,8 @@ fieldset[disabled] .btn-success.active {
 .btn-info.active.focus,
 .open > .dropdown-toggle.btn-info.focus {
   color: #ffffff;
-  background-color: #43a8d0;
-  border-color: #2a83a6;
+  background-color: #3db0df;
+  border-color: #1f8dba;
 }
 .btn-info:active,
 .btn-info.active,
@@ -3270,11 +3270,11 @@ fieldset[disabled] .btn-info:active,
 .btn-info.disabled.active,
 .btn-info[disabled].active,
 fieldset[disabled] .btn-info.active {
-  background-color: #88c8e1;
-  border-color: #74bfdc;
+  background-color: skyblue;
+  border-color: #71c5e7;
 }
 .btn-info .badge {
-  color: #88c8e1;
+  color: skyblue;
   background-color: #ffffff;
 }
 .btn-warning {
@@ -4873,11 +4873,11 @@ a.label:focus {
   background-color: #5ac766;
 }
 .label-info {
-  background-color: #88c8e1;
+  background-color: skyblue;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #5fb5d7;
+  background-color: #5bbce4;
 }
 .label-warning {
   background-color: #ffa26c;
@@ -5130,7 +5130,7 @@ a.thumbnail.active {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-bar-info {
-  background-color: #88c8e1;
+  background-color: skyblue;
 }
 .progress-striped .progress-bar-info {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -6354,6 +6354,9 @@ button.close {
     bottom: 20px;
   }
 }
+.color-white {
+  color: white;
+}
 .clearfix:before,
 .clearfix:after,
 .dl-horizontal dd:before,
@@ -6672,12 +6675,14 @@ button.close {
 .post-weather_title {
   color: #fff;
 }
-.svg-default {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-}
+/*.svg {
+	&-default {
+		fill:none;
+		stroke-linecap:round;
+		stroke-linejoin:round;
+		stroke-miterlimit:10;
+	}
+}*/
 .topMenu {
   text-transform: uppercase;
   overflow: hidden;
@@ -6710,7 +6715,7 @@ button.close {
   stroke: #80d489;
 }
 .topMenu-center_logo:hover .sunset {
-  stroke: #88c8e1;
+  stroke: skyblue;
 }
 .topMenu-right-menu {
   text-align: right;
@@ -6728,7 +6733,7 @@ button.close {
   display: block;
 }
 .topMenu-right-menu-item a:hover .icon {
-  stroke: #88c8e1;
+  stroke: skyblue;
 }
 .navMenu {
   text-transform: uppercase;
@@ -6741,7 +6746,7 @@ button.close {
   padding: 10px 5px;
 }
 .navMenu-menu-item {
-  color: #88c8e1;
+  color: skyblue;
   margin-right: 20px;
 }
 .navMenu-menu-item:hover {

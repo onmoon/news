@@ -52,6 +52,7 @@
   "devDependencies": {
     "autoprefixer-core": "^5.1.9",
     "browser-sync": "^2.6.4",
+    "cheerio": "^0.19.0",
     "co-mocha": "^1.1.0",
     "gulp": "^3.8.11",
     "gulp-if": "^1.2.5",
@@ -59,7 +60,10 @@
     "gulp-less": "^3.0.2",
     "gulp-plumber": "^1.0.0",
     "gulp-postcss": "^5.1.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-svgmin": "^1.1.2",
+    "gulp-svgstore": "^5.0.0",
     "main-bower-files": "^2.6.2",
     "mocha": "^2.2.1",
     "node-pg-migrate": "0.0.9",

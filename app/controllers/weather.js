@@ -1,6 +1,7 @@
 'use strict';
 var config = require('../config/weather');
 var redisConfig = require('../config/redis');
+var helper = require('../lib/weather');
 var request = require('request');
 var redis = require('redis');
 var Q = require('q');
@@ -21,6 +22,21 @@ var parse = function (str) {
 var checkValid = function (date) {
 	return ((Date.now() - date) < config.tempTime);
 };
+var parseCurrent = function (obj) {
+	return {
+		sunrise : new Date(obj.sys.sunrise * 1000),
+		sunset  : new Date(obj.sys.sunset * 1000),
+		icon    : helper.getIcon(obj.weather[0].id),
+		temp    : obj.main.temp.toFixed(1),
+		pressure: obj.main.pressure.toFixed(1),
+		humidity: obj.main.humidity,
+		wind    : {
+			speed : obj.wind.speed,
+			way   : helper.getWay(obj.wind.deg)
+		},
+		clouds  : obj.clouds.all 
+	}
+};
 module.exports = {
 	current : function () {
 		return Q.promise(function (done, fail) {
@@ -33,7 +49,7 @@ module.exports = {
 				data = parse(data);
 				if (checkValid(data.date || 0)) {
 					console.log('Get daily weather from redis');
-					return done(data.weather);
+					return done(parseCurrent(data.weather));
 				} else {
 					console.log('Get daily weather from server');
 					request(url, function (err, res, body){
@@ -43,7 +59,7 @@ module.exports = {
 						 	date : Date.now(),
 						 	weather : weather
 						}), redis.print);
-						return done(weather);
+						return done(parseCurrent(weather));
 					});
 				}
 			});
