@@ -7,21 +7,12 @@ var redis = require('redis');
 var Q = require('q');
 
 var client = redis.createClient(redisConfig.port, redisConfig.url);
-client.on('error', function (err) {
-	console.log('Error ' + err);
-});
+client.on('error', (err) => console.log('Error ' + err));
 
-var stringify = function (obj) {
-	if(!obj) return '';
-	return JSON.stringify(obj);
-};
-var parse = function (str) {
-	if(!str) return {};
-	return JSON.parse(str);
-};
-var checkValid = function (date) {
-	return ((Date.now() - date) < config.tempTime);
-};
+var stringify = (obj) => !obj ? '' : JSON.stringify(obj);
+var parse = (str) => !str ? {} : JSON.parse(str);
+var checkValid = (date) => Date.now() - date < config.tempTime;
+
 var parseCurrent = function (obj) {
 	return {
 		sunrise : new Date(obj.sys.sunrise * 1000),
@@ -48,7 +39,7 @@ module.exports = {
 
 				data = parse(data);
 				if (checkValid(data.date || 0)) {
-					console.log('Get daily weather from redis');
+					console.log('Get daily weather from redis at ',(new Date(data.date)));
 					return done(parseCurrent(data.weather));
 				} else {
 					console.log('Get daily weather from server');

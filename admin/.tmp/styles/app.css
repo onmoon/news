@@ -30,6 +30,9 @@ a:focus {
   color: #181a1c;
   text-decoration: none;
 }
+[contenteditable="true"] {
+  outline: none;
+}
 label {
   font-weight: normal;
 }

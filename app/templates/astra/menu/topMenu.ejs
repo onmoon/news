@@ -1,4 +1,4 @@
-<div class="inner">
+<div class="container">
 	<div class="topMenu">
 		<div class="col-sm-3 topMenu-left">
 			<ul class="col-xs-6 row list-unstyled topMenu-left-menu">
@@ -23,27 +23,27 @@
 			<ul class="list-unstyled topMenu-right-menu">
 				<li class="topMenu-right-menu-item">
 					<a href="/search">
-					<svg class="topMenu-icon">
-						<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-view"></use>
-					</svg>
+						<svg class="topMenu-icon">
+							<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-view"></use>
+						</svg>
 					Поиск
 					</a>
 				</li>
 				<% if (user) {%>
 				<li class="topMenu-right-menu-item">
 					<a href="/logout">
-					<svg class="topMenu-icon">
-						<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-profile"></use>
-					</svg>
+						<svg class="topMenu-icon">
+							<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-profile"></use>
+						</svg>
 					Выйти
 					</a>
 				</li>
 				<% } else { %>
 				<li class="topMenu-right-menu-item">
 					<a href="/login">
-					<svg class="topMenu-icon">
-						<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-profile"></use>
-					</svg>
+						<svg class="topMenu-icon">
+							<use class="icon" xlink:href="/images/svg/svg.svg#svg-icon-profile"></use>
+						</svg>
 					Войти
 					</a>
 				</li>

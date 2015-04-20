@@ -6,21 +6,13 @@
 			</div>
 			<div class="panel-body">
 				<div class="form-group">
-					<label>Title</label>
-					<input type="text" class="form-control" placeholder="Title">
+					<h2 ng-model="newPost.title"  medium-editor options='{"placeholder": "Enter a title","forcePlainText": true,  "buttons": ["bold"]}'></h2>
 				</div>
 				<div class="form-group">
-					<label>Body</label>
-					<wysiwyg
-					 textarea-id="question"
-					 textarea-class="form-control"
-					 textarea-height="80px"
-					 textarea-name="textareaQuestion"
-					 textarea-required
-					 ng-model="newPost.body"
-					 enable-bootstrap-title="true"
-					 textarea-menu="{{redactor.customMenu}}">
-					</wysiwyg>
+					<h4 ng-model="newPost.subtitle"  medium-editor options='{"placeholder": "Enter a subtitle", "forcePlainText": true, "buttons": ["bold"]}'></h4>
+				</div>
+				<div class="form-group">
+					<div ng-model="newPost.body" medium-editor options='{"placeholder": "Enter a description", "buttons": ["bold", "italic", "underline", "anchor", "header1", "header2", "quote", "orderedlist", "unorderedlist"]}'>tyr</div>
 				</div>
 				<div class="form-group">
 					<label>Category</label>

@@ -102,7 +102,7 @@ gulp.task('serve', ['styles', 'svgstore','scripts','imagesWeather', 'fonts'], fu
   gulp.watch(paths.srcsStyles, ['styles'], reload);
   gulp.watch(paths.srcJs, ['scripts'], reload);
   gulp.watch(paths.srcFonts, ['fonts'], reload);
-  gulp.watch('./app/templates/astra/**/*', ['styles'], reload);
+  gulp.watch('./app/templates/**/*', ['styles'], reload);
 	// watch for changes
 	// gulp.watch([
  //    	'./public/app/**/*'

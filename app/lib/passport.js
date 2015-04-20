@@ -17,13 +17,10 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-auth').Strategy;
 
 passport.use(new LocalStrategy(function(username, password, done) {
-  // retrieve user ...
-  if (username === 'test' && password === 'test') {
-    done(null, {})
-  } else {
-    done(null, false)
-  }
-}))
+  console.log(arguments);
+  done(null,{});
+}));
+
 passport.use(new VKontakteStrategy({
     clientID: '4573664',
     clientSecret: 'lDtVBn7iu9YSfiv6Z72p',

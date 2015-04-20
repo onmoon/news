@@ -52,7 +52,6 @@
   "devDependencies": {
     "autoprefixer-core": "^5.1.9",
     "browser-sync": "^2.6.4",
-    "cheerio": "^0.19.0",
     "co-mocha": "^1.1.0",
     "gulp": "^3.8.11",
     "gulp-if": "^1.2.5",

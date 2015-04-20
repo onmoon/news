@@ -1,35 +1,39 @@
 <% include ../astra/partials/header %>
-  <section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
-    <div class="container aside-xl">
-      <a class="navbar-brand block" href="index.html">Scale</a>
-      <section class="m-b-lg">
-        <header class="wrapper text-center">
-          <strong>Sign in to get in touch</strong>
-        </header>
-        <form action="index.html">
-          <div class="list-group">
-            <div class="list-group-item">
-              <input type="email" placeholder="Email" class="form-control no-border">
-            </div>
-            <div class="list-group-item">
-               <input type="password" placeholder="Password" class="form-control no-border">
+  <section class="content">
+    <div class="container">
+      <h1 class="text-center">Вход на сайт</h1>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel">
+            <div class="panel-body">
+              <form action="/login" method="POST">
+                <div class="form-horizontal col-md-12">
+                  <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control no-border">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control no-border">
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                  <div class="m-t m-b">
+                    <a href="#">
+                      <small>Forgot password?</small>
+                    </a>
+                  </div>
+                  <div class="line line-dashed"></div>
+                  <p class="text-muted text-center">
+                    <small>Do not have an account?</small>
+                  </p>
+                  <a href="/signup" class="btn btn-default">Create an account</a>
+                </div>
+              </form>
             </div>
           </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-          <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
-          <div class="line line-dashed"></div>
-          <p class="text-muted text-center"><small>Do not have an account?</small></p>
-          <a href="/signup" class="btn btn-lg btn-default btn-block">Create an account</a>
-        </form>
-      </section>
+        </div>
+      </div>
     </div>
   </section>
   <!-- footer -->
-  <footer id="footer">
-    <div class="text-center padder">
-      <p>
-        <small>Web app framework base on Bootstrap<br>&copy; 2013</small>
-      </p>
-    </div>
-  </footer>
 <% include ../astra/partials/footer %>

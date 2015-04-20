@@ -6,8 +6,8 @@ var app = angular.module('admin', [
     'ui.router',
     'mgcrea.ngStrap',
     'restangular',
-    'wysiwyg.module',
     'ng-nestable',
+    'angular-medium-editor'
 ])
 .config(['RestangularProvider', '$nestableProvider', '$compileProvider',
   	function (RestangularProvider, nestableProvider, $compileProvider) {
