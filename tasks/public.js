@@ -36,6 +36,7 @@ var paths = {
   tmpJs             : './public/.tmp/scripts',
   tmpFonts          : './public/.tmp/fonts',
   tmpSvg            : './public/.tmp/images/svg',
+  tmpSvgAdmin       : './admin/.tmp/images/svg',
 };
 
 gulp.task('styles', function () {
@@ -92,7 +93,8 @@ gulp.task('svgstore', function () {
         }))
         .pipe(svgstore())
 
-        .pipe(gulp.dest(paths.tmpSvg));
+        .pipe(gulp.dest(paths.tmpSvg))
+        .pipe(gulp.dest(paths.tmpSvgAdmin));
 });
 
 gulp.task('serve', ['styles', 'svgstore','scripts','imagesWeather', 'fonts'], function () {

@@ -1,5 +1,4 @@
 'use strict';
-
 var koa = require('koa.io');
 var path = require('path');
 var router = require('./router');
@@ -10,7 +9,6 @@ var passport = require('koa-passport');
 var app = module.exports = koa();
 var port = process.env.PORT || 1337;
 var env = process.env.NODE_ENV || 'development';
-// выглядит знакомо
 
 var projectRoot = __dirname;
 var staticRoot = path.join(projectRoot, './public/.tmp/');
@@ -22,6 +20,7 @@ app.keys = ['your-session-secret'];
 app.use(session({
 	store : store()
 }));
+
 var middlewareStack = [
     require('koa-bodyparser')(),
     require('koa-logger')(), // логирует все http запросы

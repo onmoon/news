@@ -16,8 +16,7 @@ var filesCtrl = require('app/controllers/files');
 
 module.exports = {
 	init : function (app) {
-		router.get('/signup', pagesCtrl.signup);
-		router.get('/login', pagesCtrl.login);
+		
 		router.get('/', pagesCtrl.index);
 
 		//api
@@ -43,11 +42,13 @@ module.exports = {
 			});
 	},
 	initPassport : function (app) {
+		router.get('/signup', pagesCtrl.signup);
+		router.get('/login', pagesCtrl.login);
 		// POST /login
 		router.post('/login',
 			passport.authenticate('local', {
 				successRedirect: '/',
-				failureRedirect: '/404'
+				failureRedirect: '/'
 			})
 		);
 

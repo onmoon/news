@@ -4340,6 +4340,9 @@ fieldset[disabled] .btn-dark.active {
 .media-lg {
   min-width: 120px;
 }
+.h-20 {
+  height: 20px;
+}
 .avatar {
   position: relative;
   display: block;

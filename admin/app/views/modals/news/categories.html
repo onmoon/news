@@ -8,6 +8,12 @@
       <div class="modal-body">
         <form class="form">
           <div class="form-group">
+            <label>Иконка категории</label>
+            <svg class="form-control" data-ng-click="selectIcon()">
+              <use xlink:href="{{ category.attributes.icon | svg }}"></use>
+            </svg>
+          </div>
+          <div class="form-group">
             <label>Название категории</label>
             <input type="text" class="form-control" data-ng-model="category.attributes.name" placeholder="Название для новой группы пользователей">    
           </div>

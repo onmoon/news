@@ -1,7 +1,7 @@
 'use strict';
 app
-    .controller('categoriesMainCtrl', ['$scope', '$modal', 'categoriesCollection',
-    function ( $scope, $modal, categoriesCollection) {
+    .controller('categoriesMainCtrl', ['$scope', '$modal', 'categoriesCollection', 'icons',
+    function ( $scope, $modal, categoriesCollection, icons) {
         $scope.categories = categoriesCollection;
         $scope.setCollection = function (collection) {
             var cats = _.chain(collection.models)
@@ -47,6 +47,16 @@ app
                     $scope.setCollection($scope.categories);
                 });
         };
+
+        $scope.selectIcon = function () {
+            $scope.icons = icons.data.match(/id="(.+?)"/gi).map(function(str){ return str.match(/id="(.+?)"/)[1]});
+            $modal({
+                scope: $scope,
+                template: 'views/modals/news/icons.html',
+                placement : 'center',
+                show: true
+            });
+        }
 
 
         $scope.addCategory = function (category) {

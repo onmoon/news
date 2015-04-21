@@ -3,6 +3,7 @@ exports.up = function(pgm) {
 		id		: 'id',
 		name	: 'text',
 		slug	: 'text',
+		icon	: 'text',
 		parent	: {
 			type : 'integer',
 			foreignKey : true,

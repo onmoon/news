@@ -7,6 +7,12 @@ app.config([
         .state('main.news', {
           url : '/news',
           resolve: {
+            icons: [
+              '$http',
+              function ($http) {
+                return $http.get('/images/svg/svg.svg');
+              }
+            ],
             categoriesCollection: [
               'restCollection',
               function (restCollection) {

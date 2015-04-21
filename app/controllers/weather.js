@@ -13,21 +13,19 @@ var stringify = (obj) => !obj ? '' : JSON.stringify(obj);
 var parse = (str) => !str ? {} : JSON.parse(str);
 var checkValid = (date) => Date.now() - date < config.tempTime;
 
-var parseCurrent = function (obj) {
-	return {
-		sunrise : new Date(obj.sys.sunrise * 1000),
-		sunset  : new Date(obj.sys.sunset * 1000),
-		icon    : helper.getIcon(obj.weather[0].id),
-		temp    : obj.main.temp.toFixed(1),
-		pressure: obj.main.pressure.toFixed(1),
-		humidity: obj.main.humidity,
-		wind    : {
-			speed : obj.wind.speed,
-			way   : helper.getWay(obj.wind.deg)
-		},
-		clouds  : obj.clouds.all 
-	}
-};
+var parseCurrent = obj => ({// return objects
+	sunrise : new Date(obj.sys.sunrise * 1000),
+	sunset  : new Date(obj.sys.sunset * 1000),
+	icon    : helper.getIcon(obj.weather[0].id),
+	temp    : obj.main.temp.toFixed(1),
+	pressure: obj.main.pressure.toFixed(1),
+	humidity: obj.main.humidity,
+	wind    : {
+		speed : obj.wind.speed,
+		way   : helper.getWay(obj.wind.deg)
+	},
+	clouds  : obj.clouds.all 
+});
 module.exports = {
 	current : function () {
 		return Q.promise(function (done, fail) {

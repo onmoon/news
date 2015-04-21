@@ -6,9 +6,13 @@
 	<section class="scrollable wrapper">
 		<div ng-nestable ng-model="cats">
 			<div>
-				<b>{{$item.name}}</b>
+				<svg class="i-s i-fw h-20">
+					<use xlink:href="{{ $item.icon | svg }}"></use>
+				</svg>
+      			<b>{{$item.name}}</b>
 				({{$item.slug}})
 				<span class="pull-right">
+
 					<a data-ng-mousedown="editCategory($item)"><i class="fa fa-pencil icon-muted fa-fw m-r-xs"></i></a>
 					<a data-ng-mousedown="removeCategory($item)"><i class="fa fa-times icon-muted fa-fw"></i></a>
 				</span>

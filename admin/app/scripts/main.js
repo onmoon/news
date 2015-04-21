@@ -39,4 +39,9 @@ var app = angular.module('admin', [
 	});
 	$scope.socket.emit('join', {});
 
-}]);
+}])
+.filter('svg', function (){
+	return function (icon) {
+		return '/images/svg/svg.svg#' + icon;
+	}
+})
