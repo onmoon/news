@@ -1,0 +1,101 @@
+.spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 3px;
+  position: absolute;
+  background: white;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  margin-top: -30px;
+  margin-left: -30px;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes rotateplane {
+  0% {
+    -webkit-transform: perspective(120px);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+.preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: transparent;
+}
+.preloader svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -32.5px;
+  margin-left: -32.5px;
+}
+.preloader-left {
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 999;
+  transition: 0.7s 0.3s all ease-in-out;
+}
+.slide-left {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+  background: transparent;
+  will-change: transform;
+}
+.preloader-right {
+  position: fixed;
+  width: 50%;
+  right: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 999;
+  transition: 0.7s 0.3s all ease-in-out;
+}
+.slide-right {
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  background: transparent;
+  will-change: transform;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to right, #077d8b, #c5d361);
+}
+@media all and (max-width: 768px) {
+  body {
+    background: linear-gradient(to bottom, #077d8b, #c5d361);
+  }
+}
+
+/*# sourceMappingURL=weather.css.map */

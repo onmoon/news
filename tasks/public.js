@@ -24,6 +24,7 @@ var reload = browserSync.reload;
 
 var paths = {
   srcStyles         : './public/app/styles/app.less',
+  srcWeatherStyles  : './public/app/styles/weather.less',
   srcsStyles        : './public/app/styles/**/*.less',
   srcJs             : './public/app/scripts/**/*.js',
   srcFonts          : './public/app/fonts/**/*',
@@ -33,6 +34,7 @@ var paths = {
 
   tmpWeatherImages  : './public/.tmp/images/weather',
   tmpStyles         : './public/.tmp/styles',
+  tmpWeatherStyles  : './public/.tmp/styles',
   tmpJs             : './public/.tmp/scripts',
   tmpFonts          : './public/.tmp/fonts',
   tmpSvg            : './public/.tmp/images/svg',
@@ -52,7 +54,19 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(paths.tmpStyles))
     .pipe(reload({stream: true}));
 });
-
+gulp.task('weatherstyles', function () {
+  return gulp.src(paths.srcWeatherStyles)
+    .pipe(less())
+    .pipe(sourcemaps.init())
+    .pipe(postcss([
+      autoprefixer({
+        browsers: ['last 1 version']
+      })
+    ]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.tmpWeatherStyles))
+    .pipe(reload({stream: true}));
+});
 gulp.task('fonts', function () {
   return gulp.src(paths.srcFonts)
     .pipe(gulp.dest(paths.tmpFonts));
@@ -97,11 +111,12 @@ gulp.task('svgstore', function () {
         .pipe(gulp.dest(paths.tmpSvgAdmin));
 });
 
-gulp.task('serve', ['styles', 'svgstore','scripts','imagesWeather', 'fonts'], function () {
+gulp.task('serve', ['styles','weatherstyles', 'svgstore','scripts','imagesWeather', 'fonts'], function () {
  	browserSync({
 		proxy: "http://localhost:1337"
 	});
   gulp.watch(paths.srcsStyles, ['styles'], reload);
+  gulp.watch(paths.srcWeatherStyles, ['weatherstyles'], reload);
   gulp.watch(paths.srcJs, ['scripts'], reload);
   gulp.watch(paths.srcFonts, ['fonts'], reload);
   gulp.watch('./app/templates/**/*', ['styles'], reload);

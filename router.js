@@ -18,6 +18,8 @@ module.exports = {
 	init : function (app) {
 		
 		router.get('/', pagesCtrl.index);
+		router.get('/weather', pagesCtrl.weather);
+		router.get('/categories/:slug', pagesCtrl.categories);
 
 		//api
 		rest('users', usersCtrl);

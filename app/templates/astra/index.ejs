@@ -4,6 +4,7 @@
 		<div class="col-md-9">
 			<% news.forEach(function(post){ %>
 				<%= post.title %>
+				<%= post.slug %>
 				<svg><use xlink:href="/images/svg/svg.svg#<%= post.category_icon %>"></use></svg>
 			<% }) %>
   		</div>
