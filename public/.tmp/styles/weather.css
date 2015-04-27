@@ -57,44 +57,214 @@
 }
 .preloader-left {
   position: fixed;
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  height: 50%;
   background: rgba(255, 255, 255, 0.4);
   z-index: 999;
   transition: 0.7s 0.3s all ease-in-out;
 }
 .slide-left {
-  -webkit-transform: translate3d(-100%, 0, 0);
-          transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
   background: transparent;
   will-change: transform;
 }
 .preloader-right {
   position: fixed;
-  width: 50%;
-  right: 0;
-  height: 100%;
+  width: 100%;
+  bottom: 0;
+  height: 50%;
   background: rgba(255, 255, 255, 0.4);
   z-index: 999;
   transition: 0.7s 0.3s all ease-in-out;
 }
 .slide-right {
-  -webkit-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
   background: transparent;
   will-change: transform;
 }
 html {
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 body {
   height: 100%;
   margin: 0;
-  background: linear-gradient(to right, #077d8b, #c5d361);
+  background: linear-gradient(to right, #58bcbc, #d9edb0);
+}
+.content {
+  position: relative;
+  height: 100%;
+  display: none;
+}
+.show .content {
+  display: block;
+}
+.weather {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  white-space: nowrap;
+}
+.day {
+  height: 100%;
+  float: left;
+  color: #fff;
+  overflow: hidden;
+}
+.days-4 {
+  width: 20%;
+}
+.days-5 {
+  width: 15%;
+}
+.days-6 {
+  width: 12%;
+}
+.day:nth-child(even) {
+  background: linear-gradient(to bottom, rgba(30, 152, 147, 0), rgba(20, 142, 114, 0.09));
+}
+.day.active {
+  width: 40%;
+  background: none;
+}
+.day.active .hours {
+  opacity: 1;
+}
+.day.active .day-info {
+  height: 50%;
+}
+.day-info {
+  height: 100%;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.13);
+}
+.day-info .day-title,
+.day-info .day-icon,
+.day-info .day-temp {
+  display: block;
+  vertical-align: middle;
+}
+.day-icon {
+  text-align: center;
+}
+.day-icon-svg {
+  height: 50px;
+  width: 50px;
+}
+.day-temp {
+  text-align: center;
+}
+.day-title {
+  text-align: center;
+  font-weight: 100;
+  font-size: 18px;
+  height: 50%;
+}
+.day-title .weekday {
+  display: none;
+}
+.day-title .monthday {
+  padding-top: 10px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: normal;
+}
+.hours {
+  white-space: nowrap;
+  text-align: center;
+  list-style: none;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  position: relative;
+}
+.hour {
+  display: inline-block;
+  padding: 0 15px;
+  height: 90px;
+  vertical-align: top;
+}
+.hour-title {
+  font-size: 12px;
+}
+.hour-del {
+  text-align: center;
+  height: 5px;
+  margin: 8px 0;
+}
+.hour-del-circle {
+  display: inline-block;
+  width: 5px;
+  vertical-align: top;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+.hour-temp {
+  font-size: 12px;
+}
+.hour-icon {
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
 }
 @media all and (max-width: 768px) {
   body {
-    background: linear-gradient(to bottom, #077d8b, #c5d361);
+    background: linear-gradient(to bottom, #58bcbc, #d9edb0);
+  }
+  .day {
+    float: none;
+    width: 100%;
+  }
+  .days-4 {
+    height: 20%;
+  }
+  .days-5 {
+    height: 15%;
+  }
+  .days-6 {
+    height: 12%;
+  }
+  .day-info {
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    display: table;
+  }
+  .day-info .day-title,
+  .day-info .day-icon,
+  .day-info .day-temp {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .day-icon {
+    width: 20%;
+  }
+  .day-temp {
+    width: 20%;
+  }
+  .day-title {
+    width: 60%;
+    padding-left: 20px;
+    text-align: left;
+  }
+  .day-title .monthday {
+    padding-top: 0;
+  }
+  .day-title .weekday {
+    display: inline-block;
+  }
+  .day:nth-child(even) {
+    background: linear-gradient(to right, rgba(30, 152, 147, 0), rgba(20, 142, 114, 0.09));
+  }
+  .day.active {
+    width: 100%;
+    height: 40%;
   }
 }
 

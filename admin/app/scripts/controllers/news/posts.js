@@ -1,7 +1,7 @@
 'use strict';
 app
-	.controller('postsMainCtrl', ['$scope', 'newsCollection', 'categoriesCollection',
-	function ($scope, newsCollection, categoriesCollection) {
+	.controller('postsMainCtrl', ['$scope', 'newsCollection', 'categoriesCollection', 'mediumExtend',
+	function ($scope, newsCollection, categoriesCollection, mediumExtend) {
 		$scope.news = newsCollection;
         $scope.cats = _.pluck(categoriesCollection.models, 'attributes');
 
