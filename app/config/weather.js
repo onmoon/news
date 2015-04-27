@@ -8,6 +8,6 @@ module.exports = {
 		spb : 498817
 	},
 	redisKey : 'weather', 
-	//         min  sec  msec
-	tempTime : 30 * 60 * 1000 //полчаса
+	//         min  sec
+	tempTime : 30 * 60 //полчаса
 }

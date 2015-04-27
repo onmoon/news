@@ -14,7 +14,6 @@ client.on('error', (err) => console.log('Error ' + err));
 
 var stringify = (obj) => !obj ? '' : JSON.stringify(obj);
 var parse = (str) => !str ? {} : JSON.parse(str);
-var checkValid = (date) => Date.now() - date < config.tempTime;
 
 var parseCurrent = obj => ({// return objects
 	sunrise : new Date(obj.sys.sunrise * 1000),
@@ -75,20 +74,16 @@ module.exports = {
 			//check redis on weather data
 			client.get(key, function (err, data) {				
 				if(err) return fail(err);
-
-				data = parse(data);
-				if (checkValid(data.date || 0)) {
-					console.log('Get current weather from redis at ',(new Date(data.date)));
-					return done(data.weather);
+				if (data) {
+					console.log('Get current weather from redis');
+					return done(parse(data));
 				} else {
 					console.log('Get current weather from server');
 					request(url, function (err, res, body){
 						if(err) return fail(err);
 						var weather = parseCurrent(parse(body));
-						client.set(key, stringify({
-						 	date : Date.now(),
-						 	weather : weather
-						}), redis.print);
+						client.set(key, stringify(weather), redis.print);
+						client.expire(key, config.tempTime);
 						return done(weather);
 					});
 				}
@@ -102,20 +97,16 @@ module.exports = {
 			//check redis on weather data
 			client.get(key, function (err, data) {				
 				if(err) return fail(err);
-
-				data = parse(data);
-				if (checkValid(data.date || 0)) {
-					console.log('Get daily weather from redis at ',(new Date(data.date)));
-					return done(data.weather);
+				if (data) {
+					console.log('Get daily weather from redis');
+					return done(parse(data));
 				} else {
 					console.log('Get daily weather from server');
 					request(url, function (err, res, body){
 						if(err) return fail(err);
 						var weather = parseDaily(parse(body));
-						client.set(key, stringify({
-						 	date : Date.now(),
-						 	weather : weather
-						}), redis.print);
+						client.set(key, stringify(weather), redis.print);
+						client.expire(key, config.tempTime);
 						return done(weather);
 					});
 				}

@@ -2,11 +2,17 @@
 <div class="content">
 	<div class="container">
 		<div class="col-md-9">
-			<% news.forEach(function(post){ %>
-				<%= post.title %>
-				<%= post.slug %>
-				<svg><use xlink:href="/images/svg/svg.svg#<%= post.category_icon %>"></use></svg>
-			<% }) %>
+			<% _.each(news, function(post){ %>
+				<div class="col-md-3">
+					<div class="panel">
+						<div class="panel-heading"><%- post.title %></div>
+						<div class="panel-body">
+							<%- post.slug %>
+							<svg><use xlink:href="/images/svg/svg.svg#<%= post.category_icon %>"></use></svg>
+						</div>
+					</div>
+				</div>
+			<% }); %>
   		</div>
 		<div class="col-md-3 visible-lg-block">
 			<div class="panel panel-info weather">

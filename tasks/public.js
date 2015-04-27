@@ -16,6 +16,8 @@ var jshint = require('gulp-jshint');
 // images
 var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
+var cheerio = require('gulp-cheerio');
+
 // watch serve
 var url = require('url'); // https://www.npmjs.org/package/url
 var proxy = require('proxy-middleware'); // https://www.npmjs.org/package/proxy-middleware
@@ -97,6 +99,8 @@ gulp.task('svgstore', function () {
                 removeDoctype: false
             }, {
                 removeComments: false
+            }, {
+              removeUselessStrokeAndFill: false
             }]
         }))
         .pipe(rename({prefix: 'icon-'}))
@@ -105,10 +109,18 @@ gulp.task('svgstore', function () {
             name.push(path.basename);
             path.basename = name.join('-');
         }))
-        .pipe(svgstore())
+        .pipe(cheerio({
+            run: function ($) {
+                $('[stroke]').removeAttr('stroke');
+            },
+            parserOptions: { xmlMode: true }
+        }))
+        .pipe(svgstore({ inlineSvg: true }))
+      //  .pipe(svgstore())
 
         .pipe(gulp.dest(paths.tmpSvg))
         .pipe(gulp.dest(paths.tmpSvgAdmin));
+
 });
 
 gulp.task('serve', ['styles','weatherstyles', 'svgstore','scripts','imagesWeather', 'fonts'], function () {

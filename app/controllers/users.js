@@ -13,22 +13,5 @@ module.exports = {
 	},
 	update : function* (id) {
 		this.body = yield users.update(this.params.id, this.request.body);
-	},
-
-	admin : function* () {
-		yield this.render('admin/layout', {
-			user : 'z'
-		});
-	},
-	login : function* () {
-		yield this.render('admin/login', {
-			user : 'z'
-		});
-	},
-	signin : function* () {
-		yield this.render('admin/signin', {
-			user : 'z'
-		});
 	}
-
 }

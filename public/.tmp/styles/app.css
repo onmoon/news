@@ -6739,8 +6739,18 @@ button.close {
   color: skyblue;
   margin-right: 20px;
 }
+.navMenu-menu-item.active,
 .navMenu-menu-item:hover {
   color: #80d489;
+}
+svg {
+  fill: #000;
+}
+.fill-white {
+  stroke: #fff;
+}
+.fill-white:hover {
+  stroke: inherit;
 }
 
 /*# sourceMappingURL=app.css.map */

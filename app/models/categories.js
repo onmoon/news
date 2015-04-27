@@ -25,5 +25,10 @@ module.exports = {
 	},
 	list: function () {
 		return pg('categories').select('*');
+	},
+	menu: function () {
+		return pg('categories')
+				.select('*')
+				.where('parent', null);
 	}
 };

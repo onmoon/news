@@ -1,0 +1,19 @@
+<% include ../astra/partials/header %>
+<div class="content">
+	<div class="container">
+	<% _.each(cats, function(cat){ %>
+
+		<div class="col-md-2">
+			<a href="/categories/<%= cat.slug %>">
+				<div class="panel panel-info">
+					<div class="panel-heading text-center">
+						<%= cat.name %>
+					</div>			
+					<svg  class="fill-white"  style="width:50%;height:90px;margin:0 auto;display:block;"><use xlink:href="/images/svg/svg.svg#<%= cat.icon %>"></use></svg>
+				</div>
+			</a>
+		</div>
+	<% }) %>
+	</div>
+</div>
+<% include ../astra/partials/footer %>

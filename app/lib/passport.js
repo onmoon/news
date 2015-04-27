@@ -5,7 +5,7 @@ var users = {};
 passport.serializeUser(function (user, done){
 	done(null,user.id);
 });
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
 	var user = users[id] || { id : id };
   done(null, user);
 });

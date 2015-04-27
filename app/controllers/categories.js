@@ -1,17 +1,20 @@
 'use strict';
 var categories = require('app/models/categories');
-
 module.exports = {
-	create : function* () {
+	create: function* () {
 		this.body = yield categories.create(this.request.body);
 	},
-	delete : function* () {
+	delete: function* () {
 		this.body = yield categories.delete(this.params.id);
 	},
-	update : function* (id) {
+	update: function* (id) {
 		this.body = yield categories.update(this.params.id, this.request.body);
 	},
-	list : function* () {
+	list: function* () {
 		this.body = yield categories.list();
+	},
+	menu: function () {
+		console.log('TODO:кеш для меню');
+		return categories.menu();
 	}
 }

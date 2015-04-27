@@ -43,5 +43,5 @@ var app = angular.module('admin', [
 .filter('svg', function (){
 	return function (icon) {
 		return '/images/svg/svg.svg#' + icon;
-	}
-})
+	};
+});

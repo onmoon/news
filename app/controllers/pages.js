@@ -5,35 +5,33 @@ var _ = require('lodash');
 
 module.exports = {
 	index : function *() {
-		var news = yield pages.index();
-		yield this.render('astra/index', {
-			user : this.passport.user,
-			news : news
-		});		
+		this.state.news = yield pages.index();
+		yield this.render('astra/index');		
 	},
-	categories: function* () {
-		var news = yield pages.categories(this.params.slug);
-		yield this.render('astra/index', {
-			user : this.passport.user,
-			news : news
-		});		
+	categoryList: function* () {
+		this.state.cats = yield pages.categoryList();
+		yield this.render('astra/categories');
+	},
+	categorySingle: function* () {
+		this.state.active = this.params.slug;
+		this.state.news = yield pages.categorySingle(this.params.slug);
+		yield this.render('astra/index');		
 	},
 	post: function* () {
 
 	},
 	login : function* () {
-		yield this.render('pages/login', {
-			user : this.passport.user
-		});
+		yield this.render('pages/login');
 	},
 	signup : function* () {
-		yield this.render('pages/signup', {
-		});
+		yield this.render('pages/signup');
 	},
 	weather : function* () {
-		var info = yield weather.daily();
-		yield this.render('weather/index', {
-			weather : info 
-		})
+		this.state.weather = yield weather.daily();
+		yield this.render('weather/index');
+	},
+	admin : function* () {
+		yield this.render('admin/layout');
 	}
+
 }

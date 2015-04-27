@@ -16,10 +16,13 @@ var filesCtrl = require('app/controllers/files');
 
 module.exports = {
 	init : function (app) {
-		
+		app.use(this.extendRes);
+
 		router.get('/', pagesCtrl.index);
+		router.get('/admin', pagesCtrl.admin);
 		router.get('/weather', pagesCtrl.weather);
-		router.get('/categories/:slug', pagesCtrl.categories);
+		router.get('/categories', pagesCtrl.categoryList);
+		router.get('/categories/:slug', pagesCtrl.categorySingle);
 
 		//api
 		rest('users', usersCtrl);
@@ -93,6 +96,17 @@ module.exports = {
 
 		app.use(router.middleware());
 	},
+	extendRes: function* (next) {
+		var menu = yield categoriesCtrl.menu();
+		this.state.menu = menu;
+		this.state.active = '';
+		this.state.user = this.passport.user;
+
+		this.state._ = _;
+
+		yield next
+	},
+
 	initSocket : function (app) {
 		var count = 0;
 		app.io.on('connection', function (socket) {

@@ -2,7 +2,7 @@
 	<div class="topMenu">
 		<div class="col-sm-3 topMenu-left">
 			<ul class="col-xs-6 row list-unstyled topMenu-left-menu">
-				<li class="topMenu-left-menu_item"><a href="#">Item 1</a></li>
+				<li class="topMenu-left-menu_item"><a href="/categories">Категории</a></li>
 				<li class="topMenu-left-menu_item"><a href="#">Item 1</a></li>
 				<li class="topMenu-left-menu_item"><a href="#">Item 1</a></li>
 			</ul>
@@ -57,12 +57,9 @@
 			f
 			</div>
 			<div class="col-md-9">
-				<a class="navMenu-menu-item" href="#">Item 1</a>
-				<a class="navMenu-menu-item" href="#">Item 1</a>
-				<a class="navMenu-menu-item" href="#">Item 1</a>
-				<a class="navMenu-menu-item" href="#">Item 1</a>
-				<a class="navMenu-menu-item" href="#">Item 1</a>
-				<a class="navMenu-menu-item" href="#">Item 1</a>
+			<% _.each(menu, function (item) { %>
+				<a class="navMenu-menu-item <% if(active == item.slug){%>active<%}%>" href="/categories/<%= item.slug %>"><%= item.name %></a>
+			<% }); %>
 			</div>
 		</nav>
 	</div>
